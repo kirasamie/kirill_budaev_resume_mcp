@@ -1,0 +1,13 @@
+---
+description: MCP server stack and layering rules
+globs: apps/api/**/*
+alwaysApply: false
+---
+
+# MCP Stack
+
+- SDK: `@modelcontextprotocol/sdk` only
+- Zod owner: `@portfolio/domain`
+- Tools are thin wrappers; logic in domain
+
+See `skills/rules/04-mcp-stack.md`.

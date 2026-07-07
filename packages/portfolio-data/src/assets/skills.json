@@ -1,0 +1,168 @@
+[
+  {
+    "name": "JavaScript",
+    "category": "frontend",
+    "level": "expert",
+    "aliases": ["JS"]
+  },
+  {
+    "name": "TypeScript",
+    "category": "frontend",
+    "level": "expert",
+    "aliases": ["TS"]
+  },
+  {
+    "name": "React",
+    "category": "frontend",
+    "level": "expert"
+  },
+  {
+    "name": "Vue 3",
+    "category": "frontend",
+    "level": "intermediate",
+    "aliases": ["Vue", "Vue3"]
+  },
+  {
+    "name": "Vite",
+    "category": "frontend",
+    "level": "advanced"
+  },
+  {
+    "name": "Webpack",
+    "category": "frontend",
+    "level": "advanced"
+  },
+  {
+    "name": "Module Federation",
+    "category": "architecture",
+    "level": "advanced",
+    "aliases": ["Microfrontend", "микрофронтенды"]
+  },
+  {
+    "name": "FSD",
+    "category": "architecture",
+    "level": "advanced",
+    "aliases": ["Feature-Sliced Design"]
+  },
+  {
+    "name": "Nx",
+    "category": "architecture",
+    "level": "intermediate",
+    "aliases": ["monorepo"]
+  },
+  {
+    "name": "MobX",
+    "category": "frontend",
+    "level": "advanced"
+  },
+  {
+    "name": "Effector",
+    "category": "frontend",
+    "level": "advanced"
+  },
+  {
+    "name": "Redux Toolkit",
+    "category": "frontend",
+    "level": "intermediate",
+    "aliases": ["Redux", "RTK"]
+  },
+  {
+    "name": "TanStack Query",
+    "category": "frontend",
+    "level": "advanced",
+    "aliases": ["React Query"]
+  },
+  {
+    "name": "React Hook Form",
+    "category": "frontend",
+    "level": "advanced",
+    "aliases": ["react-hook-form"]
+  },
+  {
+    "name": "styled-components",
+    "category": "frontend",
+    "level": "advanced"
+  },
+  {
+    "name": "Tailwind CSS",
+    "category": "frontend",
+    "level": "advanced",
+    "aliases": ["Tailwind"]
+  },
+  {
+    "name": "CSS",
+    "category": "frontend",
+    "level": "expert",
+    "aliases": ["CSS-modules", "Sass", "SCSS"]
+  },
+  {
+    "name": "HTML5",
+    "category": "frontend",
+    "level": "expert",
+    "aliases": ["HTML"]
+  },
+  {
+    "name": "Storybook",
+    "category": "frontend",
+    "level": "advanced"
+  },
+  {
+    "name": "NestJS",
+    "category": "backend",
+    "level": "intermediate",
+    "aliases": ["Nest"]
+  },
+  {
+    "name": "GraphQL",
+    "category": "backend",
+    "level": "intermediate"
+  },
+  {
+    "name": "REST API",
+    "category": "backend",
+    "level": "advanced",
+    "aliases": ["REST"]
+  },
+  {
+    "name": "WebSocket",
+    "category": "backend",
+    "level": "intermediate",
+    "aliases": ["socket.io"]
+  },
+  {
+    "name": "Vitest",
+    "category": "testing",
+    "level": "advanced"
+  },
+  {
+    "name": "Jest",
+    "category": "testing",
+    "level": "advanced"
+  },
+  {
+    "name": "Playwright",
+    "category": "testing",
+    "level": "advanced"
+  },
+  {
+    "name": "Cypress",
+    "category": "testing",
+    "level": "intermediate"
+  },
+  {
+    "name": "Git",
+    "category": "devops",
+    "level": "advanced"
+  },
+  {
+    "name": "Docker",
+    "category": "devops",
+    "level": "beginner"
+  },
+  {
+    "name": "OIDC",
+    "category": "backend",
+    "level": "intermediate",
+    "aliases": ["OICD", "OAuth"]
+  }
+]

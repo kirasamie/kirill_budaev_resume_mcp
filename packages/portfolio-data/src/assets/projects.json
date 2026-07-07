@@ -1,0 +1,110 @@
+[
+  {
+    "id": "rgs-insurance-forms",
+    "name": "Анкеты личного страхования",
+    "company": "Росгосстрах",
+    "summary": "Пошаговые анкеты оформления полисов с интеграцией на лендинг rgs.ru и корпоративный портал",
+    "role": "Frontend-разработчик",
+    "stack": [
+      "React",
+      "TypeScript",
+      "MobX",
+      "FSD",
+      "Module Federation",
+      "Vitest",
+      "Playwright",
+      "Storybook"
+    ],
+    "highlights": [
+      "Переиспользуемая система оплаты",
+      "Интеграция Captcha и Blitz-авторизации",
+      "E2E-тестирование с AI-агентами"
+    ],
+    "status": "active"
+  },
+  {
+    "id": "akbars-competency-matrix",
+    "name": "Матрицы компетенций",
+    "company": "Ак Барс Цифровые Технологии",
+    "summary": "Продукт с нуля: создание и настройка матриц для проведения ревью сотрудников",
+    "role": "Frontend-разработчик",
+    "stack": [
+      "React",
+      "TypeScript",
+      "Effector",
+      "NestJS",
+      "GraphQL",
+      "FSD",
+      "Module Federation"
+    ],
+    "highlights": [
+      "Архитектура приложения с нуля",
+      "Ролевая модель доступов",
+      "Микрофронтенды (Module Federation)"
+    ],
+    "links": {
+      "article": "https://habr.com/ru/articles/890290/",
+      "uiKit": "https://ornament.akbars.digital/"
+    },
+    "status": "completed"
+  },
+  {
+    "id": "akbars-tech-review",
+    "name": "Техническое ревью сотрудников",
+    "company": "Ак Барс Цифровые Технологии",
+    "summary": "Система проведения технического ревью с гибкими таблицами, фильтрами и микрофронтовыми виджетами",
+    "role": "Frontend-разработчик",
+    "stack": ["React", "TypeScript", "Effector", "GraphQL", "FSD"],
+    "highlights": [
+      "Таблица с фильтрацией, пагинацией и сохранением состояния",
+      "Страница ревью с назначением ревьюеров"
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "tender-system",
+    "name": "Система тендеров",
+    "company": "174web",
+    "summary": "Nx monorepo: создание тендеров, таблица и канбан, чат с менеджером, интеграция с Bitrix",
+    "role": "Fullstack-разработчик",
+    "stack": ["React", "NestJS", "Nx", "MobX", "TypeScript"],
+    "highlights": [
+      "Статусная и ролевая модель",
+      "Переключение таблица / канбан",
+      "Чат в карточке тендера"
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "dental-clinic",
+    "name": "Сайт стоматологической клиники",
+    "company": "174web",
+    "summary": "Рефакторинг и SEO-оптимизация с улучшением Core Web Vitals",
+    "role": "Fullstack-разработчик",
+    "stack": ["React", "NestJS", "TypeScript", "Tailwind CSS", "MJML"],
+    "highlights": ["Загрузка 3.8s → 2.1s", "MJML-рассылки для маркетинга"],
+    "status": "completed"
+  },
+  {
+    "id": "mcp-resume",
+    "name": "MCP Resume Portfolio",
+    "company": "Personal",
+    "summary": "MCP-сервер с резюме для AI-ассистентов (Cursor, Claude Desktop)",
+    "role": "Fullstack-разработчик",
+    "stack": [
+      "NestJS",
+      "React",
+      "Vite",
+      "MCP SDK",
+      "pnpm",
+      "Zod",
+      "TypeScript"
+    ],
+    "highlights": [
+      "Streamable HTTP transport",
+      "pnpm monorepo",
+      "Интерактивное portfolio для рекрутеров"
+    ],
+    "status": "in_progress"
+  }
+]
