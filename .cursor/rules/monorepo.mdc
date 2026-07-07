@@ -1,0 +1,12 @@
+---
+description: Monorepo layout and dependency boundaries for mcp_resume
+alwaysApply: true
+---
+
+# Monorepo
+
+- Scope `@portfolio/*`, import via package name only
+- `apps/` deployable, `packages/` reusable
+- Dependency flow: `data → domain → api/web`
+
+See `skills/rules/01-monorepo.md`.

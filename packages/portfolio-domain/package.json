@@ -1,0 +1,16 @@
+{
+  "name": "@portfolio/domain",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@portfolio/common": "workspace:*",
+    "@portfolio/data": "workspace:*",
+    "zod": "3.25.76"
+  }
+}

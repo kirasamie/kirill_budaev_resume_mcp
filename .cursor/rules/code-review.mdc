@@ -1,0 +1,27 @@
+---
+description: Strict code review checklist — boundaries, public API, TypeScript, MCP layering
+alwaysApply: false
+---
+
+# Code Review
+
+When reviewing diffs or PRs, follow `skills/rules/05-code-review.md`.
+
+## Order
+
+1. Scope → 2. Blockers (boundaries, deep imports, MCP layering) → 3. Conventions → 4. Behavior → 5. Tests
+
+## Blockers (must fix)
+
+- Deep imports (`@portfolio/*/src/...`, `feature/model.ts` from outside)
+- Wrong dependency direction (`packages → apps`, `web → api`)
+- Business logic in MCP tool handlers (belongs in `@portfolio/domain`)
+- Accidental public API expansion
+
+## Output
+
+Markdown table: **Severity | Location | Finding | Suggestion** — blockers first.
+
+Approve only with zero blockers and zero unresolved majors.
+
+See `skills/rules/05-code-review.md`.

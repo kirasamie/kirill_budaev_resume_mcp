@@ -1,0 +1,15 @@
+---
+description: TypeScript conventions — no .js imports, model/types/index, interface priority
+globs: **/*.ts
+alwaysApply: false
+---
+
+# TypeScript
+
+- Imports without `.js` extension
+- Functions: `export const fn = () => {}`
+- `interface` for object shapes; `type` only for unions/indexed access
+- Feature folders: `model.ts`, `types.ts`, `index.ts` (public API)
+- Constants in `constants.ts`, not magic strings
+
+See `skills/rules/02-typescript.md`.

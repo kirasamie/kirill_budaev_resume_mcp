@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+
+# compiled output
+dist/
+build/
+*.tsbuildinfo
+
+# logs
+logs/
+*.log
+pnpm-debug.log*
+
+# tests (jest --coverage → apps/api/coverage)
+coverage/
+
+# env
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

@@ -1,0 +1,125 @@
+[
+  {
+    "id": "rgs",
+    "company": "Росгосстрах",
+    "role": "Frontend-разработчик",
+    "location": "Москва",
+    "website": "https://www.rgs.ru",
+    "industry": "Страхование",
+    "startDate": "2026-01",
+    "endDate": null,
+    "highlights": [
+      "Реализация пошаговых анкет для оформления полисов с интеграцией на лендинг rgs.ru и корпоративный портал",
+      "Спроектирована и реализована переиспользуемая система оплаты: карта, СБП, кредит, оплата по ссылке",
+      "Универсальная интеграция Captcha для неавторизованной зоны совместно с backend-микросервисом",
+      "Интеграция Blitz-авторизации в анкеты",
+      "Внедрение e2e-тестирования на Playwright: документация, coverage, интеграция с AI-агентами (Claude, Cursor)",
+      "Развитие дизайн-системы rgs.ru"
+    ],
+    "stack": [
+      "React",
+      "TypeScript",
+      "MobX",
+      "React Hook Form",
+      "TanStack Query",
+      "Yup",
+      "styled-components",
+      "REST API",
+      "FSD",
+      "Vitest",
+      "Playwright",
+      "Module Federation",
+      "Webpack",
+      "Vite",
+      "Storybook"
+    ]
+  },
+  {
+    "id": "akbars",
+    "company": "Ак Барс Цифровые Технологии",
+    "role": "Frontend-разработчик",
+    "location": "Казань",
+    "startDate": "2024-06",
+    "endDate": "2026-01",
+    "highlights": [
+      "Спроектировал веб-архитектуру проекта с нуля: техническое ревью сотрудников, матрицы компетенций",
+      "Реализовал таблицу ревью с фильтрацией, пагинацией, сортировкой и сохранением фильтров",
+      "Гибкая ролевая система доступов в системе ревью",
+      "Продукт «Матрицы компетенций» — с нуля до полного релиза",
+      "Миграция сборщика Webpack → Vite на корпоративном портале (HMR: 8 сек → 1–2 сек)",
+      "Интеграция микрофронтендов (Module Federation) с Vite и Webpack",
+      "Рассылка уведомлений через socket.io и MJML-верстка email-уведомлений"
+    ],
+    "stack": [
+      "React",
+      "TypeScript",
+      "NestJS",
+      "Effect",
+      "Effector",
+      "GraphQL",
+      "REST API",
+      "FSD",
+      "Vitest",
+      "Vite",
+      "Storybook",
+      "Module Federation",
+      "Tailwind CSS",
+      "socket.io",
+      "MJML"
+    ],
+    "links": {
+      "article": "https://habr.com/ru/articles/890290/",
+      "uiKit": "https://ornament.akbars.digital/"
+    }
+  },
+  {
+    "id": "174web",
+    "company": "174web",
+    "role": "Fullstack-разработчик",
+    "startDate": "2023-06",
+    "endDate": "2024-05",
+    "highlights": [
+      "SEO-оптимизация сайта стоматологической клиники: загрузка 3.8s → 2.1s, улучшение Core Web Vitals",
+      "Система тендеров на Nx monorepo: статусная и ролевая модель, таблица и канбан, чат, интеграция с Bitrix",
+      "HR-продукт для подбора персонала: чат на socket.io, голосовые интервью через AssemblyAI"
+    ],
+    "stack": [
+      "React",
+      "NestJS",
+      "Nx",
+      "MobX",
+      "Vue 3",
+      "TypeScript",
+      "Tailwind CSS",
+      "MJML",
+      "socket.io",
+      "REST API"
+    ]
+  },
+  {
+    "id": "zeusweb",
+    "company": "ZeusWEB",
+    "role": "Frontend-разработчик",
+    "location": "Удалённо",
+    "startDate": "2022-02",
+    "endDate": "2023-05",
+    "highlights": [
+      "Разработка и поддержка веб-приложения доставки и установки натяжных потолков",
+      "Онлайн-платформа отеля для животных: оплата, бронирование дат",
+      "Архитектура клиентской части, редизайн главной страницы и каталога",
+      "Система уведомлений для работников о новых заказах"
+    ],
+    "stack": [
+      "React",
+      "React Native",
+      "Redux Toolkit",
+      "RTK Query",
+      "Express",
+      "PostgreSQL",
+      "TypeScript",
+      "SCSS",
+      "Material UI",
+      "Jest"
+    ]
+  }
+]

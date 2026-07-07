@@ -1,0 +1,18 @@
+{
+  "name": "Будаев Кирилл",
+  "title": "Frontend-разработчик",
+  "summary": "Frontend-разработчик с опытом доведения продуктов с нуля: архитектура приложений, FSD, микрофронтенды (Module Federation), monorepo. Есть fullstack-опыт с NestJS. Фокус на тестировании (Vitest, Playwright) и улучшении developer experience (миграции Webpack → Vite).",
+  "location": {
+    "city": "Москва",
+    "country": "Россия"
+  },
+  "workFormat": ["remote", "hybrid", "onsite"],
+  "relocation": true,
+  "businessTrips": true,
+  "experienceYears": 4.5,
+  "languages": [
+    { "name": "Русский", "level": "native" },
+    { "name": "Английский", "level": "B1" }
+  ],
+  "availability": "open"
+}
