@@ -27,7 +27,7 @@ web → api ❌
 common → data → domain → web → api
 ```
 
-Root `package.json` — scripts + shared dev tooling (`typescript`, `@types/node`).
+Root `package.json` — scripts, shared dev tooling (`typescript`, `@types/node`), and **workspace deps** for `@portfolio/*` (apps/packages import via package name; no `workspace:*` in individual app `package.json`).
 
 Package `devDependencies` for build tools are **not** duplicated — pnpm workspace resolves `tsc` from root.
 

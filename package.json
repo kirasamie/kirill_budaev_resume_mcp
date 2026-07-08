@@ -8,13 +8,18 @@
     "build:common": "pnpm --filter @portfolio/common build",
     "build:data": "pnpm --filter @portfolio/data build",
     "build:domain": "pnpm --filter @portfolio/domain build",
-    "build:api": "pnpm --filter api build",
+    "build:api": "pnpm build:common && pnpm --filter api build",
     "lint:ts": "eslint \"apps/**/*.{ts,tsx}\" \"packages/**/*.{ts,tsx}\" \"**/package.json\" \"*.cjs\" \"prettier.config.js\"",
     "lint:ts:fix": "pnpm lint:ts --fix",
     "test": "pnpm test:common && pnpm test:data && pnpm test:domain",
     "test:common": "pnpm --filter @portfolio/common test",
     "test:data": "pnpm --filter @portfolio/data test",
     "test:domain": "pnpm build:common && pnpm build:data && pnpm --filter @portfolio/domain test"
+  },
+  "dependencies": {
+    "@portfolio/common": "workspace:*",
+    "@portfolio/data": "workspace:*",
+    "@portfolio/domain": "workspace:*"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

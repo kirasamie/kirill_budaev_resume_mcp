@@ -7,6 +7,16 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@portfolio/common':
+        specifier: workspace:*
+        version: link:packages/common
+      '@portfolio/data':
+        specifier: workspace:*
+        version: link:packages/portfolio-data
+      '@portfolio/domain':
+        specifier: workspace:*
+        version: link:packages/portfolio-domain
     devDependencies:
       '@eslint/js':
         specifier: 10.0.1
@@ -132,12 +142,6 @@ importers:
 
   packages/portfolio-domain:
     dependencies:
-      '@portfolio/common':
-        specifier: workspace:*
-        version: link:../common
-      '@portfolio/data':
-        specifier: workspace:*
-        version: link:../portfolio-data
       zod:
         specifier: 3.25.76
         version: 3.25.76

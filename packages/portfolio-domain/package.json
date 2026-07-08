@@ -9,8 +9,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@portfolio/common": "workspace:*",
-    "@portfolio/data": "workspace:*",
     "zod": "3.25.76"
   },
   "devDependencies": {

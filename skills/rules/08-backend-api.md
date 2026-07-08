@@ -53,3 +53,20 @@ AppModule
 ├── McpModule             Controller → McpService → ToolsModule
 └── ToolsModule           *ToolsService → PortfolioModule → @portfolio/domain
 ```
+
+`AppModule` подключает features через `imports`:
+
+```typescript
+import { Module } from '@nestjs/common';
+
+import { HealthModule } from './health';
+
+@Module({
+  imports: [HealthModule],
+})
+export class AppModule {}
+```
+
+## Package imports
+
+`@portfolio/*` — в **корневом** `package.json` (`workspace:*`). В `apps/api/package.json` workspace deps не добавляем: резолв через root `node_modules`. Пакеты публикуют `dist/` — перед `build:api` нужен `build:common` (включён в root script).
