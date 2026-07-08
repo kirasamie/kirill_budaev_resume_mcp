@@ -22,10 +22,12 @@
 ## Layering
 
 ```
-MCP tools (api) → domain services → @portfolio/domain → @portfolio/data
+MCP tools (api) → Nest services → @portfolio/domain → @portfolio/data
 ```
 
-Business logic never lives in tool handlers — only wiring.
+Business logic never lives in tool handlers or controllers — only wiring.
+
+Backend structure: [08-backend-api.md](./08-backend-api.md).
 
 ## Testing
 

@@ -118,9 +118,17 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
 
-  packages/common: {}
+  packages/common:
+    devDependencies:
+      '@jest/globals':
+        specifier: 30.4.1
+        version: 30.4.1
 
-  packages/portfolio-data: {}
+  packages/portfolio-data:
+    devDependencies:
+      '@jest/globals':
+        specifier: 30.4.1
+        version: 30.4.1
 
   packages/portfolio-domain:
     dependencies:
@@ -133,6 +141,10 @@ importers:
       zod:
         specifier: 3.25.76
         version: 3.25.76
+    devDependencies:
+      '@jest/globals':
+        specifier: 30.4.1
+        version: 30.4.1
 
 packages:
 

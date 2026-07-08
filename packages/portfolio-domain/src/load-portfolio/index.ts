@@ -1,2 +1,2 @@
-export { getResumeMarkdown, loadPortfolio } from './model';
+export { loadPortfolio } from './model';
 export type { Portfolio } from './types';

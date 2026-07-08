@@ -35,7 +35,9 @@ import { profile } from '../assets';
 
 ```
 enum/             types.ts (EnumValue), model.ts (enumValues), index.ts
-index.ts          package root — EnumValue, enumValues
+text/             model.ts (containsNormalized), index.ts — normalizeText internal
+pipe/             model.ts (pipe), types.ts, index.ts
+index.ts          package root — EnumValue, enumValues, text helpers, pipe
 ```
 
 Zero runtime deps. Import via `@portfolio/common` only.
@@ -56,7 +58,9 @@ Package root exports only external surface (e.g. `loadPortfolioRaw`), not every 
 ```
 schemas/          *.schema.ts (internal), model.ts, types.ts, index.ts
 load-portfolio/   model.ts, types.ts, index.ts
-index.ts          package root — loadPortfolio, getResumeMarkdown, Portfolio
+search-skills/    model.ts, index.ts
+list-projects/    model.ts, index.ts
+index.ts          package root — loadPortfolio, searchSkills, listProjects, …
 ```
 
 ## package.json (workspace libs)
@@ -71,3 +75,11 @@ For private monorepo packages, `main` + `types` is enough:
 ```
 
 Use `exports` when publishing publicly or need conditional imports.
+
+## `apps/api` (Nest)
+
+Feature = `module.ts` + `service.ts` + `controller.ts` (если HTTP) + `index.ts` (Module only).
+
+Cross-feature — `@Module({ imports, exports })`, не deep import services.
+
+Подробнее: [08-backend-api.md](./08-backend-api.md).
