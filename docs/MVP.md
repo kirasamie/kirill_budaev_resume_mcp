@@ -6,11 +6,11 @@
 
 ## 1. Цель MVP
 
-| Для кого | Что получает |
-| -------- | ------------ |
-| **Рекрутер / hiring manager** | Landing с кратким профилем и ссылкой на MCP |
-| **AI-ассистент** | 6 tools + 1 resource с актуальными данными резюме |
-| **Разработчик (мы)** | Монорепо с чистым разделением data → domain → api/web |
+| Для кого                      | Что получает                                          |
+| ----------------------------- | ----------------------------------------------------- |
+| **Рекрутер / hiring manager** | Landing с кратким профилем и ссылкой на MCP           |
+| **AI-ассистент**              | 6 tools + 1 resource с актуальными данными резюме     |
+| **Разработчик (мы)**          | Монорепо с чистым разделением data → domain → api/web |
 
 **Критерий готовности MVP:** AI-клиент подключается к `https://<host>/mcp`, вызывает tools и получает валидный JSON/Markdown из реальных данных.
 
@@ -32,16 +32,16 @@
 
 ### Вне MVP (явно откладываем)
 
-| Item | Причина |
-| ---- | ------- |
-| OAuth / API keys | Публичный read-only сервер |
-| База данных | Данные в JSON, достаточно для MVP |
-| `@rekog/mcp-nest`, MCP Inspector | Свой тонкий Nest-адаптер |
-| fuse.js, semantic search | Простой substring-match по skills |
-| Killer tools (`compare_stack`, prompts) | Phase 2 |
-| CI/CD, Railway | После локальной проверки |
-| i18n | Данные на русском, tools отвечают как есть |
-| Resume parser (HH PDF → JSON) | Не блокирует MVP — JSON уже заполнены вручную; нужен для регулярных обновлений с hh.ru |
+| Item                                    | Причина                                                                                |
+| --------------------------------------- | -------------------------------------------------------------------------------------- |
+| OAuth / API keys                        | Публичный read-only сервер                                                             |
+| База данных                             | Данные в JSON, достаточно для MVP                                                      |
+| `@rekog/mcp-nest`, MCP Inspector        | Свой тонкий Nest-адаптер                                                               |
+| fuse.js, semantic search                | Простой substring-match по skills                                                      |
+| Killer tools (`compare_stack`, prompts) | Phase 2                                                                                |
+| CI/CD, Railway                          | После локальной проверки                                                               |
+| i18n                                    | Данные на русском, tools отвечают как есть                                             |
+| Resume parser (HH PDF → JSON)           | Не блокирует MVP — JSON уже заполнены вручную; нужен для регулярных обновлений с hh.ru |
 
 ### Data maintenance (отдельно от MVP)
 
@@ -120,16 +120,16 @@ pnpm test           # packages
 
 Единый объект `Portfolio` (валидируется `PortfolioSchema`):
 
-| Поле | Источник | Описание |
-| ---- | -------- | -------- |
-| `profile` | `profile.json` | Имя, title, summary, локация, формат работы |
-| `contact` | `contact.json` | Email, phone, telegram, preferredContact |
-| `experience` | `experience.json` | Места работы, stack, highlights |
-| `projects` | `projects.json` | Проекты с фильтрами tech/status |
-| `skills` | `skills.json` | Навыки с category, level, aliases |
-| `education` | `education.json` | Образование |
-| `certifications` | `certifications.json` | Сертификаты |
-| `resumeMarkdown` | `resume.md` | Полное резюме в Markdown (генерируется при импорте из HH PDF) |
+| Поле             | Источник              | Описание                                                      |
+| ---------------- | --------------------- | ------------------------------------------------------------- |
+| `profile`        | `profile.json`        | Имя, title, summary, локация, формат работы                   |
+| `contact`        | `contact.json`        | Email, phone, telegram, preferredContact                      |
+| `experience`     | `experience.json`     | Места работы, stack, highlights                               |
+| `projects`       | `projects.json`       | Проекты с фильтрами tech/status                               |
+| `skills`         | `skills.json`         | Навыки с category, level, aliases                             |
+| `education`      | `education.json`      | Образование                                                   |
+| `certifications` | `certifications.json` | Сертификаты                                                   |
+| `resumeMarkdown` | `resume.md`           | Полное резюме в Markdown (генерируется при импорте из HH PDF) |
 
 **Синхронизация:** на старте MVP — ручная. Импорт (Epic H): **HH PDF → `*.json` + `resume.md`**.
 
@@ -143,11 +143,11 @@ Input schemas для MCP tools уже в domain:
 
 ## 5. HTTP API
 
-| Method | Path | Назначение |
-| ------ | ---- | ---------- |
-| `GET` | `/health` | Liveness: `{ ok, version, mcp: '/mcp' }` |
-| `*` | `/mcp` | MCP Streamable HTTP (stateless) |
-| `GET` | `/*` | Static web (prod only) |
+| Method | Path      | Назначение                               |
+| ------ | --------- | ---------------------------------------- |
+| `GET`  | `/health` | Liveness: `{ ok, version, mcp: '/mcp' }` |
+| `*`    | `/mcp`    | MCP Streamable HTTP (stateless)          |
+| `GET`  | `/*`      | Static web (prod only)                   |
 
 **Transport:** `@modelcontextprotocol/sdk`, `sessionIdGenerator: undefined` (stateless).
 
@@ -157,32 +157,35 @@ Input schemas для MCP tools уже в domain:
 
 ### Tools
 
-| Tool | Input | Output | Domain |
-| ---- | ----- | ------ | ------ |
-| `get_profile` | — | `Profile` | `getProfile()` |
-| `get_contact_info` | — | `Contact` | `getContact()` |
-| `get_experience` | — | `Experience[]` | portfolio.experience |
-| `list_projects` | `ListProjectsInput` | `Project[]` | `listProjects()` |
-| `get_project_details` | `GetProjectDetailsInput` | `Project` | `getProjectByName()` |
-| `search_skills` | `SearchSkillsInput` | `Skill[]` | `searchSkills()` |
+| Tool                  | Input                    | Output         | Domain               |
+| --------------------- | ------------------------ | -------------- | -------------------- |
+| `get_profile`         | —                        | `Profile`      | `getProfile()`       |
+| `get_contact_info`    | —                        | `Contact`      | `getContact()`       |
+| `get_experience`      | —                        | `Experience[]` | portfolio.experience |
+| `list_projects`       | `ListProjectsInput`      | `Project[]`    | `listProjects()`     |
+| `get_project_details` | `GetProjectDetailsInput` | `Project`      | `getProjectByName()` |
+| `search_skills`       | `SearchSkillsInput`      | `Skill[]`      | `searchSkills()`     |
 
 ### Resources
 
-| URI | MIME | Content |
-| --- | ---- | ------- |
+| URI                | MIME            | Content               |
+| ------------------ | --------------- | --------------------- |
 | `profile://resume` | `text/markdown` | `getResumeMarkdown()` |
 
 ### Поведение domain services (to implement)
 
 **`searchSkills({ query, category? })`**
+
 - Case-insensitive match по `name` и `aliases`
 - Optional filter по `category`
 
 **`listProjects({ tech?, status? })`**
+
 - `tech`: substring match в `stack[]`
 - `status`: exact match (`active` | `completed` | …)
 
 **`getProjectByName({ name })`**
+
 - Case-insensitive match по `name`
 - Throw / MCP error если не найден
 
@@ -212,17 +215,17 @@ Input schemas для MCP tools уже в domain:
 
 ## 9. Текущий статус
 
-| Компонент | Статус |
-| --------- | ------ |
-| `@portfolio/common` | ✅ |
-| `@portfolio/data` | ✅ |
-| `@portfolio/domain` schemas + load | ✅ |
-| `@portfolio/domain` services | ❌ |
-| Resume import (HH PDF → JSON) | ❌ |
-| `apps/api` MCP | ❌ (scaffold `getHello`) |
-| `apps/web` | ❌ (только tsconfig) |
-| ESLint root | ✅ |
-| Docs | 🔄 этот файл |
+| Компонент                          | Статус                   |
+| ---------------------------------- | ------------------------ |
+| `@portfolio/common`                | ✅                       |
+| `@portfolio/data`                  | ✅                       |
+| `@portfolio/domain` schemas + load | ✅                       |
+| `@portfolio/domain` services       | ❌                       |
+| Resume import (HH PDF → JSON)      | ❌                       |
+| `apps/api` MCP                     | ❌ (scaffold `getHello`) |
+| `apps/web`                         | ❌ (только tsconfig)     |
+| ESLint root                        | ✅                       |
+| Docs                               | 🔄 этот файл             |
 
 ---
 
@@ -232,65 +235,65 @@ Input schemas для MCP tools уже в domain:
 
 ### Epic A — Domain services
 
-| ID | Задача | DoD |
-| -- | ------ | --- |
-| A1 | `services/profile/` — `getProfile()`, `getContact()` | Jest: pos/neutral, экспорт из package root |
-| A2 | `services/projects/` — `listProjects()`, `getProjectByName()` | Фильтры tech/status, ошибка если project не найден |
-| A3 | `services/skills/` — `searchSkills()` | Match по name + aliases, filter category |
-| A4 | Barrel `services/index.ts` + re-export в `@portfolio/domain` | Импорт только через package name |
+| ID  | Задача                                                        | DoD                                                |
+| --- | ------------------------------------------------------------- | -------------------------------------------------- |
+| A1  | `services/profile/` — `getProfile()`, `getContact()`          | Jest: pos/neutral, экспорт из package root         |
+| A2  | `services/projects/` — `listProjects()`, `getProjectByName()` | Фильтры tech/status, ошибка если project не найден |
+| A3  | `services/skills/` — `searchSkills()`                         | Match по name + aliases, filter category           |
+| A4  | Barrel `services/index.ts` + re-export в `@portfolio/domain`  | Импорт только через package name                   |
 
 ### Epic B — API foundation
 
-| ID | Задача | DoD |
-| -- | ------ | --- |
-| B1 | Deps: `@modelcontextprotocol/sdk`, `@portfolio/domain` в `apps/api` | `pnpm install`, api build |
-| B2 | Удалить scaffold: `AppController`, `AppService`, `getHello` | Нет мёртвого кода |
-| B3 | `health/` module — `GET /health` | E2E 200, JSON body |
-| B4 | `portfolio/` module — `PortfolioService` (thin wrapper над domain) | Injectable, unit test с mock domain |
+| ID  | Задача                                                              | DoD                                 |
+| --- | ------------------------------------------------------------------- | ----------------------------------- |
+| B1  | Deps: `@modelcontextprotocol/sdk`, `@portfolio/domain` в `apps/api` | `pnpm install`, api build           |
+| B2  | Удалить scaffold: `AppController`, `AppService`, `getHello`         | Нет мёртвого кода                   |
+| B3  | `health/` module — `GET /health`                                    | E2E 200, JSON body                  |
+| B4  | `portfolio/` module — `PortfolioService` (thin wrapper над domain)  | Injectable, unit test с mock domain |
 
 ### Epic C — MCP transport
 
-| ID | Задача | DoD |
-| -- | ------ | --- |
-| C1 | `mcp/` module — `McpService` (McpServer, onModuleInit) | Server создаётся при старте |
-| C2 | Streamable HTTP transport, stateless | `ALL /mcp` отвечает на initialize |
-| C3 | `McpModule` imports `ToolsModule`, `PortfolioModule` | Module graph без циклов |
+| ID  | Задача                                                 | DoD                               |
+| --- | ------------------------------------------------------ | --------------------------------- |
+| C1  | `mcp/` module — `McpService` (McpServer, onModuleInit) | Server создаётся при старте       |
+| C2  | Streamable HTTP transport, stateless                   | `ALL /mcp` отвечает на initialize |
+| C3  | `McpModule` imports `ToolsModule`, `PortfolioModule`   | Module graph без циклов           |
 
 ### Epic D — MCP tools & resource
 
-| ID | Задача | DoD |
-| -- | ------ | --- |
-| D1 | `tools/profile-tools` — `get_profile`, `get_contact_info` | tools/list содержит оба |
-| D2 | `tools/experience-tools` — `get_experience` | Возвращает массив experience |
-| D3 | `tools/projects-tools` — `list_projects`, `get_project_details` | Zod input из domain |
-| D4 | `tools/skills-tools` — `search_skills` | Zod input из domain |
-| D5 | Resource `profile://resume` | text/markdown, содержимое resume.md |
+| ID  | Задача                                                          | DoD                                 |
+| --- | --------------------------------------------------------------- | ----------------------------------- |
+| D1  | `tools/profile-tools` — `get_profile`, `get_contact_info`       | tools/list содержит оба             |
+| D2  | `tools/experience-tools` — `get_experience`                     | Возвращает массив experience        |
+| D3  | `tools/projects-tools` — `list_projects`, `get_project_details` | Zod input из domain                 |
+| D4  | `tools/skills-tools` — `search_skills`                          | Zod input из domain                 |
+| D5  | Resource `profile://resume`                                     | text/markdown, содержимое resume.md |
 
 ### Epic E — Web landing
 
-| ID | Задача | DoD |
-| -- | ------ | --- |
-| E1 | Vite + React scaffold в `apps/web` | `pnpm dev` на отдельном порту |
-| E2 | Landing page: profile + MCP instructions | Читает данные (import domain или static copy — решить при реализации) |
-| E3 | Root script `build:web` | `web/dist` собирается |
+| ID  | Задача                                   | DoD                                                                   |
+| --- | ---------------------------------------- | --------------------------------------------------------------------- |
+| E1  | Vite + React scaffold в `apps/web`       | `pnpm dev` на отдельном порту                                         |
+| E2  | Landing page: profile + MCP instructions | Читает данные (import domain или static copy — решить при реализации) |
+| E3  | Root script `build:web`                  | `web/dist` собирается                                                 |
 
 ### Epic F — Prod wiring & docs
 
-| ID | Задача | DoD |
-| -- | ------ | --- |
-| F1 | `@nestjs/serve-static` — web dist в prod | Один процесс отдаёт `/` и `/mcp` |
-| F2 | Root `build` chain: common → data → domain → web → api | Одна команда перед деплоем |
-| F3 | `README.md` — setup, MCP config для Cursor | Copy-paste `.cursor/mcp.json` |
-| F4 | Manual smoke: 5 demo prompts | get_profile, search_skills react, list_projects NestJS, get_project_details, resume resource |
-| F5 | Dockerfile (optional для MVP, желательно) | `docker build` + run |
+| ID  | Задача                                                 | DoD                                                                                          |
+| --- | ------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
+| F1  | `@nestjs/serve-static` — web dist в prod               | Один процесс отдаёт `/` и `/mcp`                                                             |
+| F2  | Root `build` chain: common → data → domain → web → api | Одна команда перед деплоем                                                                   |
+| F3  | `README.md` — setup, MCP config для Cursor             | Copy-paste `.cursor/mcp.json`                                                                |
+| F4  | Manual smoke: 5 demo prompts                           | get_profile, search_skills react, list_projects NestJS, get_project_details, resume resource |
+| F5  | Dockerfile (optional для MVP, желательно)              | `docker build` + run                                                                         |
 
 ### Epic G — Quality
 
-| ID | Задача | DoD |
-| -- | ------ | --- |
-| G1 | API e2e: `/health` | supertest |
-| G2 | Tool handler unit tests | mock PortfolioService |
-| G3 | Проверка eslint на новых файлах api | `pnpm lint:ts` clean |
+| ID  | Задача                              | DoD                   |
+| --- | ----------------------------------- | --------------------- |
+| G1  | API e2e: `/health`                  | supertest             |
+| G2  | Tool handler unit tests             | mock PortfolioService |
+| G3  | Проверка eslint на новых файлах api | `pnpm lint:ts` clean  |
 
 ### Epic H — HH PDF import → portfolio-data (data maintenance)
 
@@ -308,19 +311,19 @@ resume.pdf (HH export)
     → write assets/*.json + resume.md
 ```
 
-| ID | Задача | DoD |
-| -- | ------ | --- |
-| H1 | Контракт формата HH PDF + фикстура | `docs/hh-resume-format.md`; тестовый `resume.hh.fixture.pdf` в `import-hh/__fixtures__/` |
-| H2 | `import-hh/extract-pdf/` — извлечение текста из PDF | `extractPdfText(buffer): string`; dep `pdf-parse` |
-| H3 | `import-hh/parse-hh/` — парсер текста HH → промежуточная структура | Секции: шапка, «О себе», «Опыт работы», «Навыки», «Образование», «Знание языков» и т.д. |
-| H4 | `import-hh/sync/` — маппинг → `assets/*.json` | `profile`, `contact`, `experience`, `skills`, `education`, `certifications` |
-| H5 | `generateResumeMarkdown()` — `resume.md` из распарсенных данных | MCP resource остаётся MD; файл перезаписывается при sync |
-| H6 | Маппинг навыков HH → `Skill[]` + `skills-overrides.json` | Эвристики level/category + ручные overrides после импорта |
-| H7 | `projects.json` — не в HH PDF | Оставляем ручным или merge: импорт не трогает файл без `--force-projects` |
-| H8 | Валидация через `PortfolioSchema` перед записью | Zod error → exit 1, файлы не перезаписываются |
-| H9 | CLI `pnpm sync:portfolio --from <path.pdf>` (+ `--dry-run`, `--diff`) | Dry-run: diff без записи |
-| H10 | Jest: extract + parse на `resume.hh.fixture.pdf` | pos: полный импорт; neg: битый PDF / неизвестный шаблон → throw |
-| H11 | `docs/data-update.md` — «обновить резюме с HH» | Export PDF с hh.ru → sync → что проверить руками |
+| ID  | Задача                                                                | DoD                                                                                      |
+| --- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| H1  | Контракт формата HH PDF + фикстура                                    | `docs/hh-resume-format.md`; тестовый `resume.hh.fixture.pdf` в `import-hh/__fixtures__/` |
+| H2  | `import-hh/extract-pdf/` — извлечение текста из PDF                   | `extractPdfText(buffer): string`; dep `pdf-parse`                                        |
+| H3  | `import-hh/parse-hh/` — парсер текста HH → промежуточная структура    | Секции: шапка, «О себе», «Опыт работы», «Навыки», «Образование», «Знание языков» и т.д.  |
+| H4  | `import-hh/sync/` — маппинг → `assets/*.json`                         | `profile`, `contact`, `experience`, `skills`, `education`, `certifications`              |
+| H5  | `generateResumeMarkdown()` — `resume.md` из распарсенных данных       | MCP resource остаётся MD; файл перезаписывается при sync                                 |
+| H6  | Маппинг навыков HH → `Skill[]` + `skills-overrides.json`              | Эвристики level/category + ручные overrides после импорта                                |
+| H7  | `projects.json` — не в HH PDF                                         | Оставляем ручным или merge: импорт не трогает файл без `--force-projects`                |
+| H8  | Валидация через `PortfolioSchema` перед записью                       | Zod error → exit 1, файлы не перезаписываются                                            |
+| H9  | CLI `pnpm sync:portfolio --from <path.pdf>` (+ `--dry-run`, `--diff`) | Dry-run: diff без записи                                                                 |
+| H10 | Jest: extract + parse на `resume.hh.fixture.pdf`                      | pos: полный импорт; neg: битый PDF / неизвестный шаблон → throw                          |
+| H11 | `docs/data-update.md` — «обновить резюме с HH»                        | Export PDF с hh.ru → sync → что проверить руками                                         |
 
 **Где живёт код:**
 

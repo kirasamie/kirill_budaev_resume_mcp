@@ -2,11 +2,11 @@
 
 ## Runners
 
-| Layer            | Runner | Config                          |
-| ---------------- | ------ | ------------------------------- |
-| `packages/*`     | Jest   | `jest.config.cjs` → `...base`   |
-| `apps/api`       | Jest   | inline in `package.json`        |
-| `apps/web`       | Vitest | when app exists                 |
+| Layer        | Runner | Config                        |
+| ------------ | ------ | ----------------------------- |
+| `packages/*` | Jest   | `jest.config.cjs` → `...base` |
+| `apps/api`   | Jest   | inline in `package.json`      |
+| `apps/web`   | Vitest | when app exists               |
 
 Shared preset: `jest.config.base.cjs` at repo root.
 
@@ -47,8 +47,8 @@ describe('readResumeMarkdown', () => {
 
 Each `describe` block covers three groups where applicable:
 
-| Group      | Meaning                                      |
-| ---------- | -------------------------------------------- |
+| Group        | Meaning                                    |
+| ------------ | ------------------------------------------ |
 | **positive** | Happy path — valid input, expected result  |
 | **neutral**  | Edge but valid — empty string, single item |
 | **negative** | Error / invalid — throws, missing data     |

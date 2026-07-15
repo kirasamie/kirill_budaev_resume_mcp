@@ -14,12 +14,12 @@ pnpm --filter api start:dev   # после реализации MCP
 
 ## Monorepo
 
-| Package | Scope |
-| ------- | ----- |
-| `packages/common` | `@portfolio/common` |
-| `packages/portfolio-data` | `@portfolio/data` |
+| Package                     | Scope               |
+| --------------------------- | ------------------- |
+| `packages/common`           | `@portfolio/common` |
+| `packages/portfolio-data`   | `@portfolio/data`   |
 | `packages/portfolio-domain` | `@portfolio/domain` |
-| `apps/api` | NestJS API |
-| `apps/web` | React landing (WIP) |
+| `apps/api`                  | NestJS API          |
+| `apps/web`                  | React landing (WIP) |
 
 Конвенции: [`skills/rules/`](./skills/rules/)

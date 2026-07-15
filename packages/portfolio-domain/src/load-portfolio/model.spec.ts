@@ -1,5 +1,4 @@
 import { afterEach, describe, expect, it, jest } from '@jest/globals';
-
 import * as data from '@portfolio/data';
 
 import { loadPortfolio } from './model';

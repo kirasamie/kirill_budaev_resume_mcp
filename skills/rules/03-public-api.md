@@ -4,16 +4,36 @@
 
 Each package and feature folder exposes **one door** — `index.ts`.
 
+Import **only the symbols you need** — named imports from the segment **public API** (`index.ts`).
+
 ```typescript
 // ✅
 import { loadPortfolio, ProfileSchema } from '@portfolio/domain';
-import { profile, readResumeMarkdown } from '@portfolio/data';
-import { loadPortfolioRaw } from '@portfolio/data'; // via load-portfolio/index.ts
+import { Container } from '@shared/ui';
+import { cn } from '@shared/lib';
+
+// ❌ deep path — bypasses public API
+import { loadPortfolioRaw } from '@portfolio/data/load-portfolio/model';
+import { Container } from '@shared/ui/container/view';
+```
+
+## Minimal surface
+
+**Export (`index.ts`):** every symbol that **other slices import** must be exported. Unused symbols — not exported (props, internal types stay inside the slice).
+
+**Import:** only through the segment public API; named import for what you use:
+
+```typescript
+// ✅
+import { Container, Section } from '@shared/ui';
+import { getPortfolio } from '@shared/lib';
 
 // ❌
-import { loadPortfolioRaw } from '@portfolio/data/load-portfolio/model';
-import { ProfileService } from '@portfolio/domain/src/services/profile.service';
+import { Container } from '@shared/ui/container'; // deep path
+export type { HeroProps } from './types'; // not used outside slice
 ```
+
+Segment `index.ts` re-exports **only consumed symbols** — not the whole subtree «на всякий случай».
 
 ## Feature folder pattern (model / types / index)
 

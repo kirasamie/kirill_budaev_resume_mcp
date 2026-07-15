@@ -10,7 +10,7 @@ export class McpController {
   constructor(private readonly mcpService: McpService) {}
 
   @Post()
-  async handle(@Req() req: Request, @Res() res: Response): Promise<void> {
+  async handle(@Req() req: Request, @Res() res: Response) {
     const server = this.mcpService.createServer();
     const transport = new StreamableHTTPServerTransport({
       sessionIdGenerator: undefined,

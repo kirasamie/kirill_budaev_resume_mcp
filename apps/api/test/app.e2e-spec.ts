@@ -1,12 +1,11 @@
 import { describe, it, expect, afterEach, beforeEach } from '@jest/globals';
 import { Test } from '@nestjs/testing';
+import { APP_VERSION } from '@portfolio/common';
 import request from 'supertest';
 
 import type { INestApplication } from '@nestjs/common';
 import type { TestingModule } from '@nestjs/testing';
 import type { App } from 'supertest/types';
-
-import { APP_VERSION } from '@portfolio/common';
 
 import { AppModule } from '../src/app.module';
 import { McpAcceptHeader } from '../src/mcp/constants';
@@ -28,7 +27,9 @@ describe('HealthController (e2e)', () => {
   });
 
   it('/health (GET)', async () => {
-    const response = await request(app.getHttpServer()).get('/health').expect(200);
+    const response = await request(app.getHttpServer())
+      .get('/health')
+      .expect(200);
 
     expect(response.body).toEqual({
       ok: true,

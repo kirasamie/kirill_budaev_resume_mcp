@@ -42,6 +42,22 @@ Use `export const`, not `export function`:
 export const loadPortfolioRaw = (): PortfolioRaw => ({ ... });
 ```
 
+### Return types
+
+Skip explicit return type when inference yields a **simple** type:
+
+```typescript
+// ✅ inferred
+export const getMcpUrl = () => import.meta.env.VITE_MCP_URL ?? `${window.location.origin}/mcp`;
+export const copyToClipboard = async (text: string) => { await navigator.clipboard.writeText(text); };
+
+// ❌ redundant simple annotation
+export const getMcpUrl = (): string => ...;
+export const copyToClipboard = async (text: string): Promise<void> => ...;
+```
+
+Keep return types for **named domain/complex** types (`Portfolio`, `McpServer`), unions, generics, non-obvious contracts.
+
 ## Types vs interfaces
 
 - **`interface`** — object shapes (priority)

@@ -1,4 +1,5 @@
-export default {  semi: true,
+export default {
+  semi: true,
   trailingComma: 'all',
   singleQuote: true,
   printWidth: 80,

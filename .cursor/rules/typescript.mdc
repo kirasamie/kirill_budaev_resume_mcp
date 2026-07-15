@@ -9,6 +9,7 @@ alwaysApply: false
 - Imports without `.js` extension
 - Type-only imports: `import type { … }` or `import { foo, type Bar }` — never value import for types
 - Functions: `export const fn = () => {}`
+- No simple return types (`void`, `Promise<void>`, primitives); keep named domain types
 - `interface` for object shapes; `type` only for unions/indexed access
 - Feature folders: `model.ts`, `types.ts`, `index.ts` (public API)
 - Constants in `constants.ts`, not magic strings

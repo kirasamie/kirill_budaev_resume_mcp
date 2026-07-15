@@ -1,0 +1,1 @@
+export { getMcpUrl } from './env';

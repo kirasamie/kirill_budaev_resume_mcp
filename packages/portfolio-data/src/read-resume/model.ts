@@ -5,5 +5,5 @@ import { RESUME_FILE_NAME, TEXT_ENCODING } from '../assets';
 
 const assetsDir = join(__dirname, '../assets');
 
-export const readResumeMarkdown = (): string =>
+export const readResumeMarkdown = () =>
   readFileSync(join(assetsDir, RESUME_FILE_NAME), TEXT_ENCODING);
