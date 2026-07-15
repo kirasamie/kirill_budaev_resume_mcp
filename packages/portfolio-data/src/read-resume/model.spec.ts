@@ -1,15 +1,16 @@
+import { afterEach, describe, expect, it, jest } from '@jest/globals';
+import { readFileSync } from 'fs';
+
+import { readResumeMarkdown } from './model';
+
 jest.mock('fs', () => {
-  const actual = jest.requireActual('fs');
+  const actual = jest.requireActual<typeof import('fs')>('fs');
 
   return {
     ...actual,
     readFileSync: jest.fn(actual.readFileSync),
   };
 });
-
-import { readFileSync } from 'fs';
-
-import { readResumeMarkdown } from './model';
 
 const readFileSyncMock = jest.mocked(readFileSync);
 

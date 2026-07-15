@@ -1,20 +1,20 @@
+import { afterEach, describe, expect, it, jest } from '@jest/globals';
+
+import * as data from '@portfolio/data';
+
+import { loadPortfolio } from './model';
+
 jest.mock('@portfolio/data', () => {
-  const actual = jest.requireActual('@portfolio/data');
+  const actual = jest.requireActual<typeof data>('@portfolio/data');
 
   return {
     ...actual,
     loadPortfolioRaw: jest.fn(actual.loadPortfolioRaw),
-    readResumeMarkdown: jest.fn(actual.readResumeMarkdown),
   };
 });
 
-import * as data from '@portfolio/data';
-
-import { getResumeMarkdown, loadPortfolio } from './model';
-
 const actualData = jest.requireActual<typeof data>('@portfolio/data');
 const loadPortfolioRawMock = jest.mocked(data.loadPortfolioRaw);
-const readResumeMarkdownMock = jest.mocked(data.readResumeMarkdown);
 
 describe('loadPortfolio', () => {
   afterEach(() => {
@@ -53,32 +53,5 @@ describe('loadPortfolio', () => {
     } as ReturnType<typeof data.loadPortfolioRaw>);
 
     expect(() => loadPortfolio()).toThrow();
-  });
-});
-
-describe('getResumeMarkdown', () => {
-  afterEach(() => {
-    readResumeMarkdownMock.mockImplementation(actualData.readResumeMarkdown);
-  });
-
-  it('Если файл резюме доступен, то возвращает непустую строку без полного парсинга портфолио', () => {
-    const markdown = getResumeMarkdown();
-
-    expect(typeof markdown).toBe('string');
-    expect(markdown.length).toBeGreaterThan(0);
-  });
-
-  it('Если файл резюме пустой, то возвращает пустую строку', () => {
-    readResumeMarkdownMock.mockReturnValue('');
-
-    expect(getResumeMarkdown()).toBe('');
-  });
-
-  it('Если чтение резюме завершается ошибкой, то getResumeMarkdown пробрасывает её', () => {
-    readResumeMarkdownMock.mockImplementation(() => {
-      throw new Error('read failed');
-    });
-
-    expect(() => getResumeMarkdown()).toThrow('read failed');
   });
 });

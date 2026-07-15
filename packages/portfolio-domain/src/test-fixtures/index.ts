@@ -1,0 +1,1 @@
+export { createPortfolioFixture } from './model';

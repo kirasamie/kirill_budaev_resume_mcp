@@ -12,6 +12,28 @@ import { ProfileSchema } from './profile.schema';
 import { ProfileSchema } from './profile.schema.js';
 ```
 
+### Type-only imports
+
+Type imports must use `import type` or inline `type` — never a value import for types only.
+
+```typescript
+// ✅ only types
+import type { Portfolio } from './types';
+
+// ✅ mixed: value + type
+import { enumValues, type EnumValue } from '@portfolio/common';
+
+// ✅ re-export
+export { loadPortfolio, type Portfolio } from './load-portfolio';
+
+// ❌ Portfolio is a type — do not import as value
+import { Portfolio } from './types';
+```
+
+ESLint: `@typescript-eslint/consistent-type-imports` (`prefer: 'type-imports'`).
+
+When both forms are valid, prefer **`import type`** for a separate type-only line; use **inline `type`** when importing values and types from the same module.
+
 ## Functions
 
 Use `export const`, not `export function`:
@@ -67,7 +89,8 @@ Never import `model.ts` or `types.ts` from outside the folder — only `index.ts
 ## Nest modules
 
 - Public API = `@Module({ exports })`
-- Optional `feature/index.ts` exports only the Module
+- Feature folder: `module.ts`, `service.ts`, `controller.ts` (no feature prefix in filenames)
+- Full backend conventions: `08-backend-api.md`
 
 ## File naming
 

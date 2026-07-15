@@ -15,6 +15,20 @@ Shared preset: `jest.config.base.cjs` at repo root.
 - `*.spec.ts` next to the module under test
 - Excluded from `tsc` build via `exclude: ["src/**/*.spec.ts"]`
 
+## Jest globals (explicit imports)
+
+Do **not** rely on ambient Jest types (`types: ["jest"]` in `tsconfig.spec.json`).
+
+Import from `@jest/globals` in every `*.spec.ts`:
+
+```typescript
+import { afterEach, describe, expect, it, jest } from '@jest/globals';
+```
+
+Import only what the file uses (`describe`, `it`, `expect` — minimum).
+
+`tsconfig.spec.json` per package: `"types": ["node", "@jest/globals"]` — no ambient global `describe` / `it` / `expect`.
+
 ## Test descriptions
 
 - **Language:** Russian only in `it(...)` strings

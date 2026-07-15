@@ -22,10 +22,24 @@
 ## Layering
 
 ```
-MCP tools (api) → domain services → @portfolio/domain → @portfolio/data
+MCP tools (api) → Nest services → @portfolio/domain → @portfolio/data
 ```
 
-Business logic never lives in tool handlers — only wiring.
+Business logic never lives in tool handlers or controllers — only wiring.
+
+Backend structure: [08-backend-api.md](./08-backend-api.md).
+
+## HTTP (`POST /mcp`)
+
+Streamable HTTP, **stateless** (`sessionIdGenerator: undefined`).
+
+Клиент **обязан** слать header (иначе SDK → 406):
+
+```
+Accept: application/json, text/event-stream
+```
+
+Константа: `McpAcceptHeader` в `apps/api/src/mcp/constants.ts`.
 
 ## Testing
 

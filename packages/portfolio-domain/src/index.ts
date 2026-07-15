@@ -1,8 +1,7 @@
-export {
-  getResumeMarkdown,
-  loadPortfolio,
-  type Portfolio,
-} from './load-portfolio';
+export { loadPortfolio, type Portfolio } from './load-portfolio';
+
+export { findProjectsByName, listProjects } from './list-projects';
+export { searchSkills } from './search-skills';
 
 export {
   AvailabilitySchema,
