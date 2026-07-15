@@ -11,7 +11,7 @@ export class PortfolioService implements OnModuleInit {
     this.portfolio = loadPortfolio();
   }
 
-  getPortfolio() {
+  getPortfolio(): Portfolio {
     return this.portfolio;
   }
 }

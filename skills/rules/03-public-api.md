@@ -78,8 +78,12 @@ Use `exports` when publishing publicly or need conditional imports.
 
 ## `apps/api` (Nest)
 
-Feature = `module.ts` + `service.ts` + `controller.ts` (если HTTP) + `index.ts` (Module only).
+Feature = `module.ts` + `service.ts` + `controller.ts` (если HTTP) + `index.ts`.
 
-Cross-feature — `@Module({ imports, exports })`, не deep import services.
+**`index.ts`** — public API feature для других потребителей: **Module** + **exported providers** (если sibling inject'ит). Пример: `portfolio/index.ts` → `PortfolioModule` + `PortfolioService`; `health/index.ts` → только `HealthModule`.
+
+**`AppModule`** — только `imports: [XxxModule]`, не Services.
+
+Cross-feature — `@Module({ imports, exports })`, import классов через feature `index.ts`, не deep import `service.ts`.
 
 Подробнее: [08-backend-api.md](./08-backend-api.md).

@@ -10,6 +10,7 @@ import {
 
 import { PortfolioService } from '../portfolio';
 import { ToolStatus } from './constants';
+import { ProjectDetailsResult } from './types';
 
 @Injectable()
 export class ToolsService {
@@ -42,7 +43,7 @@ export class ToolsService {
     return searchSkillsFromPortfolio(this.portfolio, input);
   }
 
-  getProjectDetails(input: GetProjectDetailsInput) {
+  getProjectDetails(input: GetProjectDetailsInput): ProjectDetailsResult {
     const matches = findProjectsByName(this.portfolio, input);
 
     if (!matches.length) {

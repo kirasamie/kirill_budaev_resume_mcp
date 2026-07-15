@@ -8,7 +8,7 @@
     "build:common": "pnpm --filter @portfolio/common build",
     "build:data": "pnpm --filter @portfolio/data build",
     "build:domain": "pnpm --filter @portfolio/domain build",
-    "build:api": "pnpm build:common && pnpm --filter api build",
+    "build:api": "pnpm build && pnpm --filter api build",
     "lint:ts": "eslint \"apps/**/*.{ts,tsx}\" \"packages/**/*.{ts,tsx}\" \"**/package.json\" \"*.cjs\" \"prettier.config.js\"",
     "lint:ts:fix": "pnpm lint:ts --fix",
     "test": "pnpm test:common && pnpm test:data && pnpm test:domain",
