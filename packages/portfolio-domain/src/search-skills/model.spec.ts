@@ -1,7 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
 
 import { loadPortfolio } from '../load-portfolio';
-
 import { searchSkills } from './model';
 
 const portfolio = loadPortfolio();

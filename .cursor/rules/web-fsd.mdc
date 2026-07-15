@@ -1,0 +1,19 @@
+---
+description: Web FSD — layers, view.tsx, public API, twMerge, ClassNameProps
+globs: apps/web/**/*
+alwaysApply: false
+---
+
+# Web FSD
+
+- Layers: `app → pages → widgets → features → shared`; import via segment `index.ts` (`@shared/ui`, not `@shared/ui/container`)
+- `index.ts` exports symbols siblings consume; unused props/types stay internal
+- Main slice UI: `view.tsx` + `types.ts` + `index.ts`; `ui/` only for secondary components
+- `app/App.tsx` — exception, keep filename
+- `interface` for props; `type` only for unions/derived types
+- `ClassNameProps` from `@shared/types`; `cn()` only when merging `className` prop
+- JSX: `condition && <El />`, not ternary; `onClick={handler}` without void wrapper
+- No simple return types (`void`, `Promise<void>`, primitives)
+- No `entities/` until entity UI state is needed; types from `@portfolio/domain/schemas`
+
+See `skills/rules/09-web-fsd.md`.

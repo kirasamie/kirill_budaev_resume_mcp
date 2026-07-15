@@ -1,6 +1,6 @@
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { Injectable } from '@nestjs/common';
 import { APP_VERSION } from '@portfolio/common';
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
 import { ToolsService } from '../tools';
 import { registerMcpHandlers } from './lib';

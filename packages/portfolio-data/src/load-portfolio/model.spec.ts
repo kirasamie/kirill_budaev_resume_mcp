@@ -1,7 +1,6 @@
 import { afterEach, describe, expect, it, jest } from '@jest/globals';
 
 import * as readResume from '../read-resume';
-
 import { loadPortfolioRaw } from './model';
 
 describe('loadPortfolioRaw', () => {

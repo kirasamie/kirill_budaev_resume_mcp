@@ -10,10 +10,7 @@ import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { MimeType, ResourceUri } from '../constants';
 import { generateContent, generateResourceContent } from './content';
 
-export const registerMcpHandlers = (
-  server: McpServer,
-  tools: ToolsService,
-): void => {
+export const registerMcpHandlers = (server: McpServer, tools: ToolsService) => {
   server.registerTool(
     'get_profile',
     {

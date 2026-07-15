@@ -1,7 +1,8 @@
 import { describe, expect, it } from '@jest/globals';
 
-import { enumValues } from './model';
 import type { EnumValue } from './types';
+
+import { enumValues } from './model';
 
 const Status = {
   Active: 'active',

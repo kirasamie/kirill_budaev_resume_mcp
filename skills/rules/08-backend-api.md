@@ -62,7 +62,7 @@ export { PortfolioService } from './service';
 
 ```typescript
 imports: [HealthModule, ToolsModule]; // ✅
-imports: [PortfolioService];         // ❌
+imports: [PortfolioService]; // ❌
 ```
 
 ## Module graph
