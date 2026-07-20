@@ -23,17 +23,13 @@ export default defineConfig({
       '@widgets': path.resolve(rootDir, 'src/widgets'),
       '@features': path.resolve(rootDir, 'src/features'),
       '@shared': path.resolve(rootDir, 'src/shared'),
-      '@portfolio/domain/schemas': path.resolve(
+      '@portfolio/data/landing': path.resolve(
         monorepoRoot,
-        'packages/portfolio-domain/src/schemas/index.ts',
+        'packages/portfolio-data/src/landing/index.ts',
       ),
-      '@portfolio/domain': path.resolve(
+      '@portfolio/domain/landing': path.resolve(
         monorepoRoot,
-        'packages/portfolio-domain/src/index.ts',
-      ),
-      '@portfolio-data/assets': path.resolve(
-        monorepoRoot,
-        'packages/portfolio-data/src/assets',
+        'packages/portfolio-domain/src/landing/index.ts',
       ),
     },
   },

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "pnpm --filter @portfolio/data build && pnpm --filter @portfolio/domain build && tsc -b && vite build",
     "lint": "eslint .",
     "lint:ts": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:ts:fix": "pnpm lint:ts --fix",
@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@portfolio/data": "workspace:*",
     "@portfolio/domain": "workspace:*",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
