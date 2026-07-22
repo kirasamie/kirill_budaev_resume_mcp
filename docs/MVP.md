@@ -390,6 +390,7 @@ Sprint 4 / parallel (data maintenance — до обновления на HH)
 
 ## 13. Ссылки
 
+- After MVP: [`docs/AFTER_MVP.md`](./AFTER_MVP.md)
 - Конвенции: [`skills/rules/`](../skills/rules/)
 - MCP stack: [`skills/rules/04-mcp-stack.md`](../skills/rules/04-mcp-stack.md)
 - Monorepo: [`skills/rules/01-monorepo.md`](../skills/rules/01-monorepo.md)
