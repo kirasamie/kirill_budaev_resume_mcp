@@ -10,7 +10,7 @@ const staticPath = join(__dirname, '..', '..', 'static');
     ? [
         ServeStaticModule.forRoot({
           rootPath: staticPath,
-          exclude: ['/health', '/health/(.*)', '/mcp', '/mcp/(.*)'],
+          exclude: ['/health{/*path}', '/mcp{/*path}'],
         }),
       ]
     : [],

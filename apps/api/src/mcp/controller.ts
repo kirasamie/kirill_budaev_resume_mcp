@@ -1,5 +1,5 @@
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
-import { Controller, Post, Req, Res } from '@nestjs/common';
+import { All, Controller, Req, Res } from '@nestjs/common';
 import { Throttle } from '@nestjs/throttler';
 
 import type { Request, Response } from 'express';
@@ -15,7 +15,7 @@ export class McpController {
     private readonly mcpConfig: McpConfig,
   ) {}
 
-  @Post()
+  @All()
   async handle(@Req() req: Request, @Res() res: Response) {
     const server = this.mcpService.createServer();
     const transport = new StreamableHTTPServerTransport({
