@@ -2,15 +2,14 @@
 
 Публичное портфолио с MCP-сервером: AI-клиенты запрашивают резюме, навыки и проекты через [Model Context Protocol](https://modelcontextprotocol.io/).
 
-**MVP-документация:** [docs/MVP.md](./docs/MVP.md) — scope, архитектура, MCP tools, задачи.  
-**После MVP:** [docs/AFTER_MVP.md](./docs/AFTER_MVP.md) — resume page, i18n и бэклог улучшений.
+**Бэклог:** [docs/AFTER_MVP.md](./docs/AFTER_MVP.md)
 
 ## Quick start
 
 ```bash
 pnpm install
-pnpm build
-pnpm --filter api start:dev   # после реализации MCP
+pnpm build:all
+pnpm api start:dev
 ```
 
 ## Monorepo
@@ -21,6 +20,6 @@ pnpm --filter api start:dev   # после реализации MCP
 | `packages/portfolio-data`   | `@portfolio/data`   |
 | `packages/portfolio-domain` | `@portfolio/domain` |
 | `apps/api`                  | NestJS API          |
-| `apps/web`                  | React landing (WIP) |
+| `apps/web`                  | React landing       |
 
 Конвенции: [`skills/rules/`](./skills/rules/)
