@@ -1,0 +1,1 @@
+export { StaticModule } from './module';

@@ -4,14 +4,28 @@
   "private": true,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./landing": {
+      "types": "./dist/landing/index.d.ts",
+      "import": "./dist/landing/index.js",
+      "default": "./dist/landing/index.js"
+    }
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "jest"
   },
   "dependencies": {
-    "zod": "3.25.76"
+    "@portfolio/common": "workspace:*",
+    "@portfolio/data": "workspace:*",
+    "zod": "~3.25.76"
   },
   "devDependencies": {
-    "@jest/globals": "30.4.1"
+    "@jest/globals": "~30.4.1"
   }
 }

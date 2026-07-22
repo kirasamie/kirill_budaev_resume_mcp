@@ -21,6 +21,7 @@ export {
   SkillListSchema,
   SkillSchema,
   WorkFormatSchema,
+  PublicContactSchema,
 } from './model';
 
 export type {
@@ -41,4 +42,5 @@ export type {
   SkillCategory,
   SkillLevel,
   WorkFormat,
+  PublicContact,
 } from './types';

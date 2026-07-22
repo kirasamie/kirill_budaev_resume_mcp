@@ -1,4 +1,4 @@
-export const ToolStatus = {
+export const ProjectDetailsStatus = {
   FOUND: 'found',
   AMBIGUOUS: 'ambiguous',
   NOT_FOUND: 'notFound',

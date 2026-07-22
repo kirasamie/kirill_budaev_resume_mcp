@@ -8,7 +8,7 @@ export {
 } from './shared.schema';
 
 export { ProfileSchema } from './profile.schema';
-export { ContactSchema } from './contact.schema';
+export { ContactSchema, PublicContactSchema } from './contact.schema';
 export { ExperienceSchema, ExperienceListSchema } from './experience.schema';
 export {
   GetProjectDetailsInputSchema,

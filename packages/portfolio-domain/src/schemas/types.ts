@@ -8,7 +8,7 @@ export type {
 } from './shared.schema';
 
 export type { Profile } from './profile.schema';
-export type { Contact } from './contact.schema';
+export type { Contact, PublicContact } from './contact.schema';
 export type { Experience } from './experience.schema';
 export type {
   GetProjectDetailsInput,

@@ -7,7 +7,6 @@ import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
-const monorepoRoot = path.resolve(rootDir, '../..');
 
 export default defineConfig({
   plugins: [
@@ -23,18 +22,16 @@ export default defineConfig({
       '@widgets': path.resolve(rootDir, 'src/widgets'),
       '@features': path.resolve(rootDir, 'src/features'),
       '@shared': path.resolve(rootDir, 'src/shared'),
-      '@portfolio/domain/schemas': path.resolve(
-        monorepoRoot,
-        'packages/portfolio-domain/src/schemas/index.ts',
-      ),
-      '@portfolio/domain': path.resolve(
-        monorepoRoot,
-        'packages/portfolio-domain/src/index.ts',
-      ),
-      '@portfolio-data/assets': path.resolve(
-        monorepoRoot,
-        'packages/portfolio-data/src/assets',
-      ),
     },
+  },
+  // Workspace packages emit CJS (tsc Node16). Vite treats linked deps as
+  // source and would serve raw CJS to the browser — prebundle to ESM.
+  optimizeDeps: {
+    include: [
+      '@portfolio/data',
+      '@portfolio/data/landing',
+      '@portfolio/domain',
+      '@portfolio/domain/landing',
+    ],
   },
 });

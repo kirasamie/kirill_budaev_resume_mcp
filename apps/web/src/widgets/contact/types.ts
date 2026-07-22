@@ -1,5 +1,5 @@
-import type { Contact } from '@portfolio/domain/schemas';
+import type { PublicContact } from '@portfolio/domain/landing';
 
 export interface ContactBlockProps {
-  contact: Contact;
+  contact: PublicContact;
 }

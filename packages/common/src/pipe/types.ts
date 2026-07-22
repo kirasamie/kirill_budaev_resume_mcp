@@ -28,7 +28,8 @@ export type PipeResult<
   Fns extends readonly Fn[],
 > = Fns extends readonly []
   ? Input
-  : Fns extends readonly [Fn<infer A, infer B>, ...infer Rest]
+  : // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    Fns extends readonly [Fn<infer A, infer B>, ...infer Rest]
     ? PipeResult<B, Extract<Rest, readonly Fn[]>>
     : never;
 

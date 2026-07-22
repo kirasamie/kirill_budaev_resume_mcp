@@ -1,8 +1,9 @@
 export { loadPortfolio, type Portfolio } from './load-portfolio';
 
 export { findProjectsByName, listProjects } from './list-projects';
+export { getProjectDetails, ProjectDetailsStatus } from './get-project-details';
 export { searchSkills } from './search-skills';
-
+export { toPublicContact } from './public-contact';
 export {
   AvailabilitySchema,
   CertificationListSchema,
@@ -26,6 +27,7 @@ export {
   SkillListSchema,
   SkillSchema,
   WorkFormatSchema,
+  PublicContactSchema,
 } from './schemas';
 
 export type {
@@ -45,4 +47,10 @@ export type {
   SkillCategory,
   SkillLevel,
   WorkFormat,
+  PublicContact,
 } from './schemas';
+
+export type {
+  ProjectDetailsResult,
+  ProjectDetailsStatusType,
+} from './get-project-details';

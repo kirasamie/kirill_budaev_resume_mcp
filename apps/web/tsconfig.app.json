@@ -26,14 +26,8 @@
       "@pages/*": ["./src/pages/*"],
       "@widgets/*": ["./src/widgets/*"],
       "@features/*": ["./src/features/*"],
-      "@shared/*": ["./src/shared/*"],
-      "@portfolio/domain": ["../../packages/portfolio-domain/src/index.ts"],
-      "@portfolio/domain/schemas": [
-        "../../packages/portfolio-domain/src/schemas/index.ts"
-      ],
-      "@portfolio-data/assets/*": ["../../packages/portfolio-data/src/assets/*"]
+      "@shared/*": ["./src/shared/*"]
     },
-
     /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
