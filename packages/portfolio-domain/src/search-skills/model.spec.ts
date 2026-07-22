@@ -35,4 +35,8 @@ describe('searchSkills', () => {
   it('Если input невалиден, то выбрасывает ошибку валидации', () => {
     expect(() => searchSkills(portfolio, { query: '' })).toThrow();
   });
+
+  it('Если query длиннее 100 символов, то выбрасывает ошибку валидации', () => {
+    expect(() => searchSkills(portfolio, { query: 'a'.repeat(101) })).toThrow();
+  });
 });

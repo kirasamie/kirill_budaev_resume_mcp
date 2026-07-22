@@ -78,7 +78,7 @@ export default defineConfig([
     },
   },
   {
-    files: ['**/*.spec.ts'],
+    files: ['**/*.spec.ts', '**/test-fixtures/**/*.ts'],
     extends: [tseslint.configs.disableTypeChecked],
     languageOptions: {
       ecmaVersion: 'latest',

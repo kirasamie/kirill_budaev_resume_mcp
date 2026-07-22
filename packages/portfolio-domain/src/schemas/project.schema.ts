@@ -33,7 +33,7 @@ export const ListProjectsInputSchema = z.object({
 export type ListProjectsInput = z.infer<typeof ListProjectsInputSchema>;
 
 export const GetProjectDetailsInputSchema = z.object({
-  name: z.string().min(1),
+  name: z.string().min(1).max(100).trim(),
 });
 
 export type GetProjectDetailsInput = z.infer<

@@ -10,4 +10,10 @@ export const ContactSchema = z.object({
   messengers: z.array(z.string()).optional(),
 });
 
+export const PublicContactSchema = ContactSchema.pick({
+  email: true,
+  telegram: true,
+});
+
 export type Contact = z.infer<typeof ContactSchema>;
+export type PublicContact = z.infer<typeof PublicContactSchema>;

@@ -1,16 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import {
-  findProjectsByName,
+  getProjectDetails as getProjectDetailsFromPortfolio,
   GetProjectDetailsInput,
   ListProjectsInput,
   SearchSkillsInput,
   listProjects as listProjectsFromPortfolio,
   searchSkills as searchSkillsFromPortfolio,
+  toPublicContact,
 } from '@portfolio/domain';
 
 import { PortfolioService } from '../portfolio';
-import { ToolStatus } from './constants';
-import { ProjectDetailsResult } from './types';
 
 @Injectable()
 export class ToolsService {
@@ -24,7 +23,7 @@ export class ToolsService {
   }
 
   getContact() {
-    return this.portfolio.contact;
+    return toPublicContact(this.portfolio.contact);
   }
 
   getExperience() {
@@ -43,18 +42,7 @@ export class ToolsService {
     return searchSkillsFromPortfolio(this.portfolio, input);
   }
 
-  getProjectDetails(input: GetProjectDetailsInput): ProjectDetailsResult {
-    const matches = findProjectsByName(this.portfolio, input);
-
-    if (!matches.length) {
-      //TODO: интеграция сервиса ошибок
-      return { status: ToolStatus.NOT_FOUND };
-    }
-
-    if (matches.length === 1) {
-      return { status: ToolStatus.FOUND, project: matches[0] };
-    }
-
-    return { status: ToolStatus.AMBIGUOUS, names: matches.map((p) => p.name) };
+  getProjectDetails(input: GetProjectDetailsInput) {
+    return getProjectDetailsFromPortfolio(this.portfolio, input);
   }
 }

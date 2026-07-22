@@ -4,6 +4,7 @@ node_modules/
 # compiled output
 dist/
 build/
+/apps/api/static/
 *.tsbuildinfo
 
 # logs
