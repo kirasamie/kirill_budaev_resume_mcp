@@ -1,0 +1,1 @@
+export { ThrottlerConfigModule } from './module';

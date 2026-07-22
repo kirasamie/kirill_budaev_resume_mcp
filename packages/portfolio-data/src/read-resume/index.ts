@@ -1,0 +1,1 @@
+export { readResumeMarkdown } from './model';

@@ -1,0 +1,14 @@
+{
+  "name": "@portfolio/common",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@jest/globals": "~30.4.1"
+  }
+}

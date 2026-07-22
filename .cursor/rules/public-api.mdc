@@ -1,0 +1,16 @@
+---
+description: Package and feature folder public API boundaries
+globs: packages/**/*
+alwaysApply: false
+---
+
+# Public API
+
+- Package entry: `index.ts` only
+- Export symbols siblings **consume**; don't export unused internals
+- Import via segment public API (`@shared/ui`) — no deep paths (`@shared/ui/container`)
+- Named imports — only symbols you use
+- Feature entry: `feature/index.ts` — never import `model.ts` from outside
+- Scope `@portfolio/*`, no deep paths
+
+See `skills/rules/03-public-api.md`.

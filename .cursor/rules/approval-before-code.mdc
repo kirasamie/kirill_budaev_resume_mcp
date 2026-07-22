@@ -1,0 +1,33 @@
+---
+description: No code changes until the user explicitly approves the proposed diff
+alwaysApply: true
+---
+
+# Approval before code
+
+Do **not** create, edit, or delete project files until the user explicitly approves that specific change.
+
+## Required workflow
+
+1. **Propose** — show structure, snippets, or a plan **in the chat** (or canvas if appropriate).
+2. **Wait** — user says approve / ok / делай / приступай (or equivalent for that item).
+3. **Implement** — only the approved scope.
+
+## Applies to
+
+- New files and folders
+- Edits to existing code
+- Deletes
+- Dependency and config changes
+
+## Exceptions (no prior approval needed)
+
+- User message is an explicit implementation request for that exact task
+- User says "делай", "реализуй", "приступай", "добавь", "fix" targeting concrete work
+- Read-only: search, read files, run non-destructive diagnostics
+
+## When user asks to "show how it will look"
+
+Answer **in chat only** — no file writes unless they approve after the preview.
+
+See `skills/rules/07-approval-before-code.md`.

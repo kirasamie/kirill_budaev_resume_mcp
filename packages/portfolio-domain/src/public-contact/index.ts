@@ -1,0 +1,1 @@
+export { toPublicContact } from './model';

@@ -1,0 +1,26 @@
+{
+  "name": "@portfolio/data",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./landing": {
+      "types": "./dist/landing/index.d.ts",
+      "import": "./dist/landing/index.js",
+      "default": "./dist/landing/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/copy-assets.mjs",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@jest/globals": "~30.4.1"
+  }
+}

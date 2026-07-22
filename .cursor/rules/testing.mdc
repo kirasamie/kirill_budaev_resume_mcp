@@ -1,0 +1,14 @@
+---
+description: Testing conventions — Jest, Russian «Если …, то …», positive/neutral/negative cases
+globs: **/*.spec.ts
+alwaysApply: false
+---
+
+# Testing
+
+- Jest: explicit `import { describe, it, expect, … } from '@jest/globals'` in every `*.spec.ts`
+- `it(...)` descriptions in Russian: **«Если …, то …»**
+- Each `describe`: positive, neutral, negative where applicable
+- Packages: Jest via `jest.config.base.cjs` + local spread override
+
+See `skills/rules/06-testing.md`.

@@ -1,0 +1,1 @@
+export { CopyMcpConfigButton } from './view';

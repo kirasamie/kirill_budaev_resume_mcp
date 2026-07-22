@@ -1,0 +1,15 @@
+---
+description: NestJS apps/api architecture — Service, Controller, Module, public API boundaries
+globs: apps/api/**/*
+alwaysApply: false
+---
+
+# Backend API
+
+- Feature = `module.ts` + `service.ts` + `controller.ts` (if HTTP) + `index.ts` (Module + exported providers for consumers)
+- `AppModule` imports Modules only, not Services
+- Controller → Service → `@portfolio/domain` (thin wiring)
+- Cross-feature via `@Module({ imports, exports })`
+- Package public API: `03-public-api.md`; MCP: `04-mcp-stack.md`
+
+See `skills/rules/08-backend-api.md`.
