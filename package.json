@@ -24,11 +24,6 @@
     "test:data": "pnpm --filter @portfolio/data test",
     "test:domain": "pnpm build:common && pnpm build:data && pnpm --filter @portfolio/domain test"
   },
-  "dependencies": {
-    "@portfolio/common": "workspace:*",
-    "@portfolio/data": "workspace:*",
-    "@portfolio/domain": "workspace:*"
-  },
   "devDependencies": {
     "@eslint/js": "~10.0.1",
     "@types/jest": "~30.0.0",

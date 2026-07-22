@@ -11,16 +11,6 @@ overrides:
 importers:
 
   .:
-    dependencies:
-      '@portfolio/common':
-        specifier: workspace:*
-        version: link:packages/common
-      '@portfolio/data':
-        specifier: workspace:*
-        version: link:packages/portfolio-data
-      '@portfolio/domain':
-        specifier: workspace:*
-        version: link:packages/portfolio-domain
     devDependencies:
       '@eslint/js':
         specifier: ~10.0.1

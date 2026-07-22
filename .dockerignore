@@ -6,7 +6,8 @@ apps/api/static
 .git
 coverage
 **/coverage
-**/*.md
+README.md
+CHANGELOG.md
 .cursor
 skills
 docs

@@ -2,7 +2,9 @@
   "name": "@portfolio/data",
   "version": "0.0.1",
   "private": true,
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
