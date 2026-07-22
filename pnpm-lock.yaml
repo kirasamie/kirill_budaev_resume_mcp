@@ -91,6 +91,12 @@ importers:
       '@nestjs/throttler':
         specifier: ~6.5.0
         version: 6.5.0(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.28)(reflect-metadata@0.2.2)
+      '@portfolio/common':
+        specifier: workspace:*
+        version: link:../../packages/common
+      '@portfolio/domain':
+        specifier: workspace:*
+        version: link:../../packages/portfolio-domain
       helmet:
         specifier: ~8.3.0
         version: 8.3.0

@@ -51,19 +51,72 @@
 
 | ID | Фича | Зачем |
 |----|------|--------|
-| O1 | README runbook + `.cursor/mcp.json` | Онбординг (препрод / сразу после ship) |
-| O2 | CI (lint, test, `build:all`, audit) | Качество на каждый PR |
-| O3 | Dockerfile / явный Railway config | Воспроизводимый деплой |
-| O4 | `trust proxy` при реальном edge/nginx | Корректный IP для throttler |
-| O5 | Metrics / uptime / structured logs (без PII резюме) | Наблюдаемость |
-| O6 | ESM (или dual) emit для `@portfolio/*` | Проще Vite monorepo без CJS prebundle |
-| O7 | **Префикс `/api` для HTTP API** (см. ниже) | Один `exclude` для static; меньше коллизий со SPA |
+| O1 | README runbook + пример MCP config | Онбординг (препрод / сразу после ship) |
+| O2 | **CI/CD** (см. ниже) | Проверки на PR + автодеплой |
+| O3 | **Pre-commit / pre-push hooks** (см. ниже) | Ловить ошибки до push/CI |
+| O4 | Dockerfile / явный config платформы | Воспроизводимый деплой |
+| O5 | `trust proxy` при реальном edge/nginx | Корректный IP для throttler |
+| O6 | Metrics / uptime / structured logs (без PII резюме) | Наблюдаемость |
+| O7 | ESM (или dual) emit для `@portfolio/*` | Проще Vite monorepo без CJS prebundle |
+| O8 | **Префикс `/api` для HTTP API** (см. ниже) | Один `exclude` для static; меньше коллизий со SPA |
 
 ---
 
-## Переезд роутов на `/api` (после MVP)
+## CI/CD (O2)
 
-**Не делать в MVP.** Сейчас ок: `/mcp`, `/health` + `ServeStatic` `exclude` для этих путей.
+**Цель:** PR не мержится красным; main деплоит один сервис (Nest + static).
+
+### CI (на каждый PR / push в ветку)
+
+```text
+pnpm install --frozen-lockfile
+pnpm lint:ts
+pnpm test                    # packages
+pnpm api test                # unit api
+pnpm api test:e2e            # при наличии env для MCP_*
+pnpm audit --prod
+pnpm build:all               # packages → web → copy static → api
+```
+
+`--frozen-lockfile` — install строго по lockfile, без тихого резолва других версий в CI.
+
+### CD (после merge в main)
+
+- Платформа (Railway / Render / …): Build = `pnpm build:all`, Start = `pnpm api start:prod` или `node apps/api/dist/main`
+- Env: `PORT`, `MCP_ALLOWED_HOSTS`, `MCP_ALLOWED_ORIGINS`, опционально `THROTTLE_HARD_LIMIT`
+- Optional smoke: `GET /health`, POST `/mcp` initialize
+
+### DoD
+
+- [ ] GitHub Actions (или аналог) на PR
+- [ ] Deploy из main (GitHub integration платформы или workflow)
+- [ ] Красный CI блокирует merge
+
+---
+
+## Pre-commit / pre-push hooks (O3)
+
+**Цель:** быстрее, чем ждать CI; не дублировать весь pipeline локально.
+
+| Hook | Что гонять | Зачем |
+|------|------------|--------|
+| **pre-commit** | lint staged (`lint-staged` + eslint/prettier) | стиль до коммита |
+| **pre-push** | `pnpm test` и/или `pnpm api test` | не пушить заведомо красные тесты |
+
+Стек: **Lefthook** или **Husky** + `lint-staged`.  
+`build:all` в pre-commit не класть — слишком тяжело.
+
+### DoD
+
+- [ ] Хуки ставятся при `pnpm install` (prepare)
+- [ ] Обход только осознанно (`--no-verify`)
+- [ ] Кратко описано в runbook
+
+---
+
+## Переезд роутов на `/api` (O8)
+
+**Не делать в MVP.** Сейчас ок: `/mcp`, `/health` + `ServeStatic` `exclude`.
 
 ### Целевая схема
 
@@ -71,28 +124,51 @@
 |------|-----------|-------------|
 | `/` + SPA (`/resume`, …) | без изменений | отдаёт static / client router |
 | `/health` | **оставить** | liveness платформы, без версии |
-| `/mcp` | **оставить** (предпочтительно) | публичный MCP URL в Cursor / лендинге; не версионировать как REST |
+| `/mcp` | **оставить** (предпочтительно) | публичный MCP URL; не версионировать как REST |
 | Новые REST (download, public JSON, …) | **`/api/v1/...`** | единый префикс для роста API |
 
-Альтернатива (если очень нужен единый `/api`): `/api/mcp` **без** `v1` — breaking change для клиентов, делать осознанно + обновить `mcp.json`, `getMcpUrl`, e2e.
+Альтернатива: `/api/mcp` **без** `v1` — breaking change для клиентов.
 
 ### Static exclude
-
-Вместо перечисления каждого Nest-роута:
 
 ```ts
 exclude: ['/health{/*path}', '/mcp{/*path}', '/api{/*path}']
 ```
 
-Новые backend-эндпоинты класть только под `/api/...` — в `exclude` больше не лезть.
+### DoD (O8)
 
-### DoD (O7)
-
-- [ ] Конвенция: REST только под `/api/v1`
+- [ ] REST только под `/api/v1`
 - [ ] `/mcp` и `/health` не переезжают без отдельного решения
 - [ ] `ServeStatic` exclude обновлён под `/api{/*path}`
 - [ ] README / landing MCP URL не сломаны
 - [ ] e2e обновлены под новые пути (если что-то переехало)
+
+---
+
+## Хостинг, домен, «нужен ли сервер» (MVP ship)
+
+**Арендовать VPS не обязательно.** Один Nest-процесс + static удобно крутить на PaaS:
+
+| Вариант | Заметки |
+|---------|---------|
+| Railway / Render / Fly | Git → build → HTTPS URL из коробки |
+| VPS (Hetzner, Timeweb, …) | дешевле при 24/7, но сами nginx/SSL/systemd |
+
+Для теста визитки + MCP достаточно URL платформы (`*.up.railway.app` и т.п.) — отдельный купленный домен не блокер.
+
+### Бесплатный / дешёвый «домен» для теста
+
+Полноценный бесплатный TLD (как старый Freenom `.tk`) по сути **умер**. Реалистичные варианты:
+
+| Вариант | Что получаешь | Минусы |
+|---------|---------------|--------|
+| **Subdomain платформы** | `xxx.up.railway.app`, `xxx.onrender.com` | не «красивое» имя; на free tier возможен sleep |
+| **[is-a.dev](https://is-a.dev/)** | `name.is-a.dev` через PR в GitHub | subdomain, не свой TLD; очередь на merge |
+| **[Open Domains](https://github.com/open-domains/register)** / community free-domains | похожий PR-flow | зависит от community |
+| **DuckDNS** | бесплатный subdomain → твой IP | нужен свой хост/IP; для PaaS обычно не нужен |
+| Платный `.dev` / `.xyz` | свой домен ~недорого в год | уже не «бесплатно» |
+
+**Практика для первого ship:** деплой на PaaS → сразу тестировать MCP по выданному HTTPS URL → красивый домен (is-a.dev или платный) повесить CNAME позже.
 
 ---
 
@@ -115,6 +191,7 @@ exclude: ['/health{/*path}', '/mcp{/*path}', '/api{/*path}']
 | База данных | JSON assets хватает |
 | Отдельный nginx «ради статики» | Static уже внутри Nest |
 | Полноценный CMS / admin | Оверкилл для личного резюме |
+| Обязательный VPS | PaaS хватает для MVP |
 
 ---
 
@@ -125,9 +202,10 @@ exclude: ['/health{/*path}', '/mcp{/*path}', '/api{/*path}']
 2. W4 clipboard polish (быстро)
 3. W1 resume page (+ W3)
 4. W2 i18n (после решения: UI vs content)
-5. H* data sync с HH
-6. M1–M2 MCP depth / O2 CI
-7. O7 `/api/v1` для новых REST — когда появится первый такой endpoint
+5. O3 hooks → O2 CI/CD
+6. H* data sync с HH
+7. M1–M2 MCP depth
+8. O8 `/api/v1` — когда появится первый REST endpoint
 ```
 
 ---
