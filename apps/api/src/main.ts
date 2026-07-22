@@ -11,7 +11,6 @@ async function bootstrap() {
   app.use(urlencoded({ extended: true, limit: '100kb' }));
 
   const port = Number(process.env.PORT ?? 3000);
-  await app.listen(port, '0.0.0.0');
-  console.log('bound', app.getHttpServer().address());
+  await app.listen(port);
 }
 bootstrap();
