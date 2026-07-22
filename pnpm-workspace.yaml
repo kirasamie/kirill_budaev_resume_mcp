@@ -4,3 +4,7 @@ packages:
 
 allowBuilds:
   unrs-resolver: false
+
+overrides:
+  fast-uri: 4.1.1
+  '@hono/node-server': 2.0.11

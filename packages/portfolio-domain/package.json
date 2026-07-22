@@ -23,9 +23,9 @@
   "dependencies": {
     "@portfolio/common": "workspace:*",
     "@portfolio/data": "workspace:*",
-    "zod": "3.25.76"
+    "zod": "~3.25.76"
   },
   "devDependencies": {
-    "@jest/globals": "30.4.1"
+    "@jest/globals": "~30.4.1"
   }
 }

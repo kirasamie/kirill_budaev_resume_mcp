@@ -21,6 +21,6 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@jest/globals": "30.4.1"
+    "@jest/globals": "~30.4.1"
   }
 }

@@ -1,6 +1,6 @@
-import type { EnumValue } from '@portfolio/common';
 import type { Project } from '../schemas';
 import type { ProjectDetailsStatus } from './constants';
+import type { EnumValue } from '@portfolio/common';
 
 export type ProjectDetailsStatusType = EnumValue<typeof ProjectDetailsStatus>;
 

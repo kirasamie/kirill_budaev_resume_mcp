@@ -1,10 +1,7 @@
 export { loadPortfolio, type Portfolio } from './load-portfolio';
 
 export { findProjectsByName, listProjects } from './list-projects';
-export {
-  getProjectDetails,
-  ProjectDetailsStatus,
-} from './get-project-details';
+export { getProjectDetails, ProjectDetailsStatus } from './get-project-details';
 export { searchSkills } from './search-skills';
 export { toPublicContact } from './public-contact';
 export {

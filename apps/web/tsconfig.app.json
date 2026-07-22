@@ -26,15 +26,8 @@
       "@pages/*": ["./src/pages/*"],
       "@widgets/*": ["./src/widgets/*"],
       "@features/*": ["./src/features/*"],
-      "@shared/*": ["./src/shared/*"],
-      "@portfolio/data/landing": [
-        "../../packages/portfolio-data/src/landing/index.ts"
-      ],
-      "@portfolio/domain/landing": [
-        "../../packages/portfolio-domain/src/landing/index.ts"
-      ]
+      "@shared/*": ["./src/shared/*"]
     },
-
     /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,

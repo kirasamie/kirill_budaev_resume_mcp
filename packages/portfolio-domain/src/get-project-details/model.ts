@@ -1,9 +1,9 @@
-import { findProjectsByName } from '../list-projects';
-import { ProjectDetailsStatus } from './constants';
-
 import type { Portfolio } from '../load-portfolio';
 import type { GetProjectDetailsInput } from '../schemas';
 import type { ProjectDetailsResult } from './types';
+
+import { ProjectDetailsStatus } from './constants';
+import { findProjectsByName } from '../list-projects';
 
 export const getProjectDetails = (
   portfolio: Portfolio,

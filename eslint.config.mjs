@@ -108,7 +108,8 @@ export default defineConfig([
         'error',
         {
           forDependencyTypes: ['devDependencies', 'dependencies'],
-          rangeType: 'pin',
+          // tilde (~x.y.z) for registry deps; pin also keeps workspace:*
+          rangeType: ['tilde', 'pin'],
         },
       ],
     },
