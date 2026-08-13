@@ -1,5 +1,11 @@
 export { ConsoleMarker } from './console-marker';
 export { ConsoleSection } from './console-section';
 export { Container } from './container';
+export { ErrorNotice } from './error-notice';
+export { ExternalLink } from './external-link';
 export { KeyValue } from './key-value';
+export { lazyContent } from './lazy-content';
+export { LoadingNotice } from './loading-notice';
 export { Section } from './section';
+export { SuspenseLoading } from './suspense-loading';
+export { Tag } from './tag';

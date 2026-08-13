@@ -1,0 +1,1 @@
+export { WhoamiBlock } from './view';

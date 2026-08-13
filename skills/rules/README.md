@@ -13,3 +13,5 @@ Conventions for the MCP Resume monorepo. Cursor picks up `.cursor/rules/*.mdc`; 
 | Strict code review                                  | [05-code-review.md](./05-code-review.md)                   |
 | Testing (Jest, «Если …, то …», pos/neutral/neg)     | [06-testing.md](./06-testing.md)                           |
 | Approval before code changes                        | [07-approval-before-code.md](./07-approval-before-code.md) |
+| Verify before handoff (no white screen / stale dist)| [10-verify-before-handoff.md](./10-verify-before-handoff.md) |
+| Types in `types.ts`; web `lib/` vs `model/` (FSD)   | [09-web-fsd.md](./09-web-fsd.md) + `.cursor/rules/types-in-types-ts.mdc` |

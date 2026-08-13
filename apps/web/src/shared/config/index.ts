@@ -1,1 +1,1 @@
-export { getMcpUrl } from './env';
+export { getApiBaseUrl, getMcpUrl } from './env';

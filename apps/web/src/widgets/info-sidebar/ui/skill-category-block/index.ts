@@ -1,0 +1,1 @@
+export { SkillCategoryBlock } from './view';

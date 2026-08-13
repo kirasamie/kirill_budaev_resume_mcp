@@ -17,6 +17,11 @@
       "types": "./dist/landing/index.d.ts",
       "import": "./dist/landing/index.js",
       "default": "./dist/landing/index.js"
+    },
+    "./resume": {
+      "types": "./dist/resume/index.d.ts",
+      "import": "./dist/resume/index.js",
+      "default": "./dist/resume/index.js"
     }
   },
   "scripts": {

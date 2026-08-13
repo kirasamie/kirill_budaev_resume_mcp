@@ -1,1 +1,1 @@
-export { ResumePage } from './view';
+export { LazyResumePage } from './async';

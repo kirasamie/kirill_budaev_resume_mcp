@@ -1,0 +1,15 @@
+---
+description: Verify the app still runs before handing work back for review
+alwaysApply: true
+---
+
+# Verify before handoff
+
+Before saying work is done or asking for review:
+
+1. Run typecheck for touched packages (`pnpm --filter web exec tsc -b`, package `build` when exports change).
+2. If web/API changed: start or use running `dev` and confirm the affected route loads (no white screen, no Vite/runtime export errors).
+3. After changing `@portfolio/*` public API: rebuild that package (`pnpm build:common` / `build:data` / `build:domain`) so `dist` matches source — Vite serves `dist` for linked CJS packages.
+4. Do not hand off known breaking changes (missing exports, red console, failed boot).
+
+If verification fails, fix it before the summary to the user.
