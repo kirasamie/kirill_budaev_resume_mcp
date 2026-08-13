@@ -11,6 +11,8 @@ const staticPath = join(__dirname, '..', '..', 'static');
         ServeStaticModule.forRoot({
           rootPath: staticPath,
           exclude: ['/health{/*path}', '/mcp{/*path}'],
+          // SPA: unknown paths (e.g. /resume) → index.html
+          renderPath: '/{*path}',
         }),
       ]
     : [],

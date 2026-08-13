@@ -1,25 +1,29 @@
-import { Container, Section } from '@shared/ui';
+import { ConsoleSection, Container, KeyValue } from '@shared/ui';
 
 import type { ContactBlockProps } from './types';
 
+const emailLabel = 'email';
+const telegramLabel = 'telegram';
+const telegramPrefix = 'https://t.me/';
+const telegramAt = '@';
+
 export const ContactBlock = ({ contact }: ContactBlockProps) => {
-  const telegramHandle = contact.telegram.replace('https://t.me/', '@');
+  const telegramHandle = contact.telegram.replace(telegramPrefix, telegramAt);
+  const mailtoHref = `mailto:${contact.email}`;
 
   return (
     <Container>
-      <Section id="contact" title="Контакты">
-        <ul className="space-y-3 text-content-base-secondary">
-          <li>
-            <span className="text-content-base-tertiary">Email: </span>
+      <ConsoleSection id="contact" title="contact">
+        <div className="space-y-3">
+          <KeyValue label={emailLabel}>
             <a
-              href={`mailto:${contact.email}`}
+              href={mailtoHref}
               className="text-content-accent-default transition hover:text-content-accent-hover"
             >
               {contact.email}
             </a>
-          </li>
-          <li>
-            <span className="text-content-base-tertiary">Telegram: </span>
+          </KeyValue>
+          <KeyValue label={telegramLabel}>
             <a
               href={contact.telegram}
               target="_blank"
@@ -28,9 +32,9 @@ export const ContactBlock = ({ contact }: ContactBlockProps) => {
             >
               {telegramHandle}
             </a>
-          </li>
-        </ul>
-      </Section>
+          </KeyValue>
+        </div>
+      </ConsoleSection>
     </Container>
   );
 };
