@@ -1,12 +1,16 @@
-import { Container } from '@shared/ui';
+import { Container, KeyValue } from '@shared/ui';
+
+const resourceLabel = 'resource';
+const resourceUri = 'profile://resume';
 
 export const SiteFooter = () => (
   <footer className="border-t border-border-base-main/80 py-8">
     <Container>
-      <p className="text-sm text-content-base-tertiary">
-        Резюме доступно AI-ассистентам через MCP tools и resource
-        <code className="text-content-base-secondary">profile://resume</code>.
-      </p>
+      <KeyValue label={resourceLabel}>
+        <code className="font-mono text-content-base-secondary">
+          {resourceUri}
+        </code>
+      </KeyValue>
     </Container>
   </footer>
 );
