@@ -21,6 +21,7 @@ export default defineConfig({
       '@pages': path.resolve(rootDir, 'src/pages'),
       '@widgets': path.resolve(rootDir, 'src/widgets'),
       '@features': path.resolve(rootDir, 'src/features'),
+      '@entities': path.resolve(rootDir, 'src/entities'),
       '@shared': path.resolve(rootDir, 'src/shared'),
     },
   },
@@ -30,8 +31,10 @@ export default defineConfig({
     include: [
       '@portfolio/data',
       '@portfolio/data/landing',
+      '@portfolio/data/resume',
       '@portfolio/domain',
       '@portfolio/domain/landing',
+      '@portfolio/domain/resume',
     ],
   },
 });

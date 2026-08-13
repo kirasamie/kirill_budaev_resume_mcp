@@ -1,0 +1,1 @@
+export { useQueryResume } from './api';
