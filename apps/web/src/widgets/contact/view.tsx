@@ -8,23 +8,23 @@ export const ContactBlock = ({ contact }: ContactBlockProps) => {
   return (
     <Container>
       <Section id="contact" title="Контакты">
-        <ul className="space-y-3 text-slate-300">
+        <ul className="space-y-3 text-content-base-secondary">
           <li>
-            <span className="text-slate-500">Email: </span>
+            <span className="text-content-base-tertiary">Email: </span>
             <a
               href={`mailto:${contact.email}`}
-              className="text-sky-300 transition hover:text-sky-200"
+              className="text-content-accent-default transition hover:text-content-accent-hover"
             >
               {contact.email}
             </a>
           </li>
           <li>
-            <span className="text-slate-500">Telegram: </span>
+            <span className="text-content-base-tertiary">Telegram: </span>
             <a
               href={contact.telegram}
               target="_blank"
               rel="noreferrer"
-              className="text-sky-300 transition hover:text-sky-200"
+              className="text-content-accent-default transition hover:text-content-accent-hover"
             >
               {telegramHandle}
             </a>
