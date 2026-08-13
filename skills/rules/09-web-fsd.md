@@ -14,7 +14,7 @@ Data: Vite imports JSON/MD from `packages/portfolio-data/src/assets`, validates 
 ## Layers & imports
 
 ```
-app  →  pages  →  widgets  →  features  →  shared
+app  →  pages  →  widgets  →  features  →  entities  →  shared
 ```
 
 - Import **only** through slice `index.ts` (public API) — `@shared/ui`, not `@shared/ui/container`
@@ -31,18 +31,33 @@ app  →  pages  →  widgets  →  features  →  shared
 
 ```
 widgets/hero/
-  types.ts      # props interfaces (if needed)
+  types.ts      # all interfaces/types for this segment
   view.tsx      # main React component (PascalCase export)
   index.ts      # public API
 ```
 
-### Feature with model segment
+### Feature with model segment (single helper module)
 
 ```
 features/copy-mcp-config/
   model/
     copy-to-clipboard.ts
-    index.ts              # public API of model
+    index.ts
+  types.ts
+  view.tsx
+  index.ts
+```
+
+When a slice needs **several** pure helpers, use `lib/` (FSD) instead of growing `model/`:
+
+```
+widgets/career-sections/
+  lib/
+    format-*.ts
+    to-link-items.ts
+    types.ts
+    index.ts              # public API of lib
+  ui/…
   types.ts
   view.tsx
   index.ts
@@ -53,19 +68,22 @@ features/copy-mcp-config/
 Create `ui/<kebab-name>/` **only** when the slice has **secondary** components besides the main `view.tsx`. Single-component slices (hero, contact) — no `ui/` folder.
 
 ```
-features/some-feature/
+widgets/career-sections/
   ui/
-    some-sub-button/
-      types.ts
-      view.tsx
-      index.ts
-    index.ts              # public API of ui segment
-  view.tsx                # main component of slice
+    experience-section/
+    experience-card/
+    …
+  view.tsx
   index.ts
 ```
 
 - **Folders/files:** `kebab-case`
-- **React exports:** `PascalCase` (`CopyMcpConfigButton`, `Hero`)
+- **React exports:** `PascalCase`
+- **Types:** only in that segment’s `types.ts` (lib-only types → `lib/types.ts`)
+- **Props:** prefer `Pick` / `Omit` / `PropsWithChildren`; pass only fields the UI uses
+- **Lists:** section maps to **card** components; no transforms buried in `.map()` bodies
+- **Simple string ops** (`mailto:`, template join): compute in the component **before** `return`, not in JSX and not in `lib/`
+- **Non-trivial / reusable** (`replace` with shared prefixes, grouping): `lib` or `@shared/lib`; regex literals → shared constants
 
 ## `shared/`
 
@@ -87,7 +105,7 @@ shared/
 
 - Conditional render: `condition && <El />`, not `condition ? <El /> : null`
 - Event handlers: `onClick={handleCopy}` — no `() => void fn()` wrappers
-- Prefer local variables over inline transforms in JSX (`telegramHandle`, not `.replace()` in markup)
+- Prefer `lib` formatters / small cards over transforms buried in list `.map()` bodies
 
 ```typescript
 import type { PropsWithChildren } from 'react';
@@ -110,13 +128,13 @@ Do **not** annotate when TypeScript infers a **simple** type:
 
 Keep explicit return types for **named domain/complex** types (`Portfolio`, `McpServer`, unions, generics).
 
-## No `entities/` for MVP
+## `entities/`
 
-Domain types come from `@portfolio/domain/schemas`. Add `entities/` when slice needs entity-specific UI state/hooks.
+Use for domain entity API hooks (e.g. `useQueryResume`) and entity-scoped logic. Pages own the query call; widgets stay presentational.
 
 ## Vite aliases
 
-`@app`, `@pages`, `@widgets`, `@features`, `@shared`, `@portfolio/domain/schemas`, `@portfolio-data/assets`.
+`@app`, `@pages`, `@widgets`, `@features`, `@entities`, `@shared`.
 
 ## Tailwind
 

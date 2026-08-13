@@ -1,1 +1,1 @@
-export { useQueryResume } from './api';
+export { useQueryResume, ResumeErrorCode } from './api';

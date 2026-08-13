@@ -4,7 +4,7 @@ export const QUERY_CLIENT_CONFIG = {
   defaultOptions: {
     queries: {
       staleTime: 60_000,
-      retry: 1,
+      retry: 3,
       refetchOnWindowFocus: false,
     },
   },

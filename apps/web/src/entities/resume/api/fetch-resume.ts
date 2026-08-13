@@ -5,7 +5,8 @@ import {
 } from '@portfolio/domain/resume';
 
 import { Endpoints } from '@shared/api';
-import { ResumeFetchError } from '@shared/lib';
+
+import { ResumeFetchError } from './errors';
 
 export const fetchResume = async (
   axios: AxiosInstance,
@@ -15,6 +16,6 @@ export const fetchResume = async (
 
     return ResumePortfolioSchema.parse(data);
   } catch (cause) {
-    throw new ResumeFetchError('Failed to load resume', cause);
+    throw new ResumeFetchError('Не удалось загрузить резюме', cause);
   }
 };

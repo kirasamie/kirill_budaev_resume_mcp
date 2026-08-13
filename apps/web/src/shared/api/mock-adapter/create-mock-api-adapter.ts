@@ -1,9 +1,7 @@
 import type { AxiosAdapter } from 'axios';
 import { AxiosError, AxiosHeaders } from 'axios';
 
-import { resumeRaw } from '@portfolio/data/resume';
-
-import { Endpoints } from '../endpoints';
+import type { MockApiResponses } from './types';
 
 const MOCK_DELAY_MS = 300;
 
@@ -20,14 +18,16 @@ const resolvePath = (url = '') => {
   }
 };
 
-export const createMockApiAdapter = (): AxiosAdapter => async (config) => {
+export const createMockApiAdapter = (
+  responses: MockApiResponses,
+): AxiosAdapter => async (config) => {
   await delay(MOCK_DELAY_MS);
 
   const path = resolvePath(config.url);
 
-  if (path === Endpoints.Resume) {
+  if (Object.hasOwn(responses, path)) {
     return {
-      data: resumeRaw,
+      data: responses[path],
       status: 200,
       statusText: 'OK',
       headers: {},

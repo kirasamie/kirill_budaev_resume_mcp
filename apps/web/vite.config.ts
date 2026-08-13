@@ -29,6 +29,7 @@ export default defineConfig({
   // source and would serve raw CJS to the browser — prebundle to ESM.
   optimizeDeps: {
     include: [
+      '@portfolio/common',
       '@portfolio/data',
       '@portfolio/data/landing',
       '@portfolio/data/resume',

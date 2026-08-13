@@ -1,11 +1,11 @@
 import { TaggedError } from '@portfolio/common';
 
-import { ErrorCode } from './constants';
+import { ResumeErrorCode } from './constants';
 
 export class ResumeFetchError extends TaggedError<
-  typeof ErrorCode.ResumeFetch
+  typeof ResumeErrorCode.ResumeFetch
 > {
   constructor(message: string, cause?: unknown) {
-    super(ErrorCode.ResumeFetch, message, cause);
+    super(ResumeErrorCode.ResumeFetch, message, cause);
   }
 }
