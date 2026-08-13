@@ -1,5 +1,5 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import tailwindcss from '@tailwindcss/vite';
 import babel from '@rolldown/plugin-babel';
