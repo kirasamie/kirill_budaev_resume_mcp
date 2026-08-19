@@ -12,6 +12,19 @@ pnpm build:all
 pnpm api start:dev
 ```
 
+## Docker Deploy
+
+Для запуска готового образа используется `compose.yaml` в корне проекта.
+
+1. Скопируйте `.env.example` в `.env`
+2. Подставьте свой `IMAGE_TAG` и значения registry
+3. Выполните:
+
+```bash
+docker compose pull
+docker compose up -d
+```
+
 ## Monorepo
 
 | Package                     | Scope               |

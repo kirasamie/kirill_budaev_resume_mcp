@@ -1,0 +1,12 @@
+services:
+  app:
+    image: ${REGISTRY_URL}/${IMAGE_NAME}:${IMAGE_TAG}
+    container_name: ${IMAGE_NAME}
+    restart: unless-stopped
+
+    ports:
+      - '${APP_PORT:-3000}:3000'
+
+    environment:
+      NODE_ENV: production
+      PORT: 3000
