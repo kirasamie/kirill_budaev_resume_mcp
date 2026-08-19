@@ -12,6 +12,9 @@ logs/
 *.log
 pnpm-debug.log*
 
+# local documentation
+/CI-CD.md
+
 # tests (jest --coverage → apps/api/coverage)
 coverage/
 
