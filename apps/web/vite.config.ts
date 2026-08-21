@@ -1,5 +1,5 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import tailwindcss from '@tailwindcss/vite';
 import babel from '@rolldown/plugin-babel';
@@ -21,6 +21,7 @@ export default defineConfig({
       '@pages': path.resolve(rootDir, 'src/pages'),
       '@widgets': path.resolve(rootDir, 'src/widgets'),
       '@features': path.resolve(rootDir, 'src/features'),
+      '@entities': path.resolve(rootDir, 'src/entities'),
       '@shared': path.resolve(rootDir, 'src/shared'),
     },
   },
@@ -28,10 +29,13 @@ export default defineConfig({
   // source and would serve raw CJS to the browser — prebundle to ESM.
   optimizeDeps: {
     include: [
+      '@portfolio/common',
       '@portfolio/data',
       '@portfolio/data/landing',
+      '@portfolio/data/resume',
       '@portfolio/domain',
       '@portfolio/domain/landing',
+      '@portfolio/domain/resume',
     ],
   },
 });

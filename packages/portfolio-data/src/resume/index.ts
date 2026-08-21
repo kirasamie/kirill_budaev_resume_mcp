@@ -1,0 +1,1 @@
+export { resumeRaw } from './model';

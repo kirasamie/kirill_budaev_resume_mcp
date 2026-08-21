@@ -1,0 +1,22 @@
+---
+description: Keep interfaces and types in types.ts of the same slice/segment
+globs: apps/web/src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Types live in `types.ts`
+
+In `apps/web` slices/segments, put **all** `interface` / `type` declarations in that folder’s `types.ts` — not in `view.tsx`, `model.ts`, or `lib/*`.
+
+```ts
+// ✅ types.ts
+export type TagProps = PropsWithChildren<ClassNameProps>;
+
+// ✅ view.tsx
+import type { TagProps } from './types';
+
+// ❌ view.tsx
+export interface TagProps { … }
+```
+
+Prefer utility types (`Pick`, `Omit`, `PropsWithChildren`, …) over hand-written field lists.

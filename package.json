@@ -19,10 +19,16 @@
     "lint:ts": "eslint \"apps/**/*.{ts,tsx}\" \"packages/**/*.{ts,tsx}\" \"**/package.json\" \"*.cjs\" \"prettier.config.js\"",
     "lint:ts:fix": "pnpm lint:ts --fix",
     "prettier:fix": "prettier --write \"apps/**/*.{ts,tsx}\" \"packages/**/*.{ts,tsx}\" \"**/*.md\" \"skills/**/*.md\" \"docs/**/*.md\" \"*.cjs\" \"prettier.config.js\" \"**/package.json\"",
-    "test": "pnpm test:common && pnpm test:data && pnpm test:domain",
+    "test": "pnpm test:common && pnpm test:data && pnpm test:domain && pnpm test:api",
+    "test:api": "pnpm --filter api test",
     "test:common": "pnpm --filter @portfolio/common test",
     "test:data": "pnpm --filter @portfolio/data test",
-    "test:domain": "pnpm build:common && pnpm build:data && pnpm --filter @portfolio/domain test"
+    "test:domain": "pnpm build:common && pnpm build:data && pnpm --filter @portfolio/domain test",
+    "test:cov": "pnpm test:common:cov && pnpm test:data:cov && pnpm test:domain:cov && pnpm test:api:cov",
+    "test:api:cov": "pnpm --filter api test:cov",
+    "test:common:cov": "pnpm --filter @portfolio/common test:cov",
+    "test:data:cov": "pnpm --filter @portfolio/data test:cov",
+    "test:domain:cov": "pnpm build:common && pnpm build:data && pnpm --filter @portfolio/domain test:cov"
   },
   "devDependencies": {
     "@eslint/js": "~10.0.1",
@@ -44,6 +50,6 @@
   "keywords": [],
   "author": "Kirill Budaev",
   "license": "ISC",
-  "packageManager": "pnpm@11.10.0",
+  "packageManager": "pnpm@11.22.0",
   "type": "module"
 }

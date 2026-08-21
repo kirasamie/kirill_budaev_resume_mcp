@@ -1,0 +1,1 @@
+export { CareerHeader } from './view';

@@ -1,0 +1,1 @@
+export { LazyResumePage } from './async';

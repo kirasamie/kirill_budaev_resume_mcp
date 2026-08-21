@@ -1,36 +1,47 @@
-import { Container, Section } from '@shared/ui';
+import {
+  formatTelegramHandle,
+  TELEGRAM_HANDLE_PREFIX,
+  TELEGRAM_URL_PREFIX,
+} from '@shared/lib';
+import { ConsoleSection, Container, KeyValue } from '@shared/ui';
 
 import type { ContactBlockProps } from './types';
 
+const emailLabel = 'email';
+const telegramLabel = 'telegram';
+
 export const ContactBlock = ({ contact }: ContactBlockProps) => {
-  const telegramHandle = contact.telegram.replace('https://t.me/', '@');
+  const telegramHandle = formatTelegramHandle(
+    contact.telegram,
+    TELEGRAM_URL_PREFIX,
+    TELEGRAM_HANDLE_PREFIX,
+  );
+  const mailtoHref = `mailto:${contact.email}`;
 
   return (
     <Container>
-      <Section id="contact" title="Контакты">
-        <ul className="space-y-3 text-slate-300">
-          <li>
-            <span className="text-slate-500">Email: </span>
+      <ConsoleSection id="contact" title="contact">
+        <div className="space-y-3">
+          <KeyValue label={emailLabel}>
             <a
-              href={`mailto:${contact.email}`}
-              className="text-sky-300 transition hover:text-sky-200"
+              href={mailtoHref}
+              className="text-content-accent-default transition hover:text-content-accent-hover"
             >
               {contact.email}
             </a>
-          </li>
-          <li>
-            <span className="text-slate-500">Telegram: </span>
+          </KeyValue>
+          <KeyValue label={telegramLabel}>
             <a
               href={contact.telegram}
               target="_blank"
               rel="noreferrer"
-              className="text-sky-300 transition hover:text-sky-200"
+              className="text-content-accent-default transition hover:text-content-accent-hover"
             >
               {telegramHandle}
             </a>
-          </li>
-        </ul>
-      </Section>
+          </KeyValue>
+        </div>
+      </ConsoleSection>
     </Container>
   );
 };

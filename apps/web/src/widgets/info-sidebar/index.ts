@@ -1,0 +1,1 @@
+export { InfoSidebar } from './view';
