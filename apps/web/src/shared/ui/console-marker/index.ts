@@ -1,0 +1,1 @@
+export { ConsoleMarker } from './view';

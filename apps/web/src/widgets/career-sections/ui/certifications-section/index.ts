@@ -1,0 +1,1 @@
+export { CertificationsSection } from './view';

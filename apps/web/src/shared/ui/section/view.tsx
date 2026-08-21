@@ -11,10 +11,12 @@ export const Section = ({
 }: SectionProps) => (
   <section id={id} className={cn('py-12', className)}>
     <div className="mb-6">
-      <h2 className="text-2xl font-semibold tracking-tight text-white">
+      <h2 className="text-2xl font-semibold tracking-tight text-content-base-primary">
         {title}
       </h2>
-      {description && <p className="mt-2 text-slate-400">{description}</p>}
+      {description && (
+        <p className="mt-2 text-content-base-tertiary">{description}</p>
+      )}
     </div>
     {children}
   </section>

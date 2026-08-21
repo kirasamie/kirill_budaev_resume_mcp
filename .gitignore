@@ -12,11 +12,18 @@ logs/
 *.log
 pnpm-debug.log*
 
-# tests (jest --coverage → apps/api/coverage)
+# local documentation
+/CI-CD.md
+
+# Jest coverage reports
 coverage/
+
+# Sonar scanner working directory
+.scannerwork/
 
 # env
 .env
+.env.sonarqube
 
 # OS
 .DS_Store

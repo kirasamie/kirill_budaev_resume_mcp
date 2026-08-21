@@ -1,0 +1,29 @@
+---
+description: Prefer reduce/map/Object helpers over for...of loops
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# No `for...of`
+
+Do not use `for (const x of …)` in application code.
+
+Prefer:
+
+- `.map` / `.filter` / `.reduce`
+- `Array.from(map, …)` / `Object.entries` / `Object.groupBy` (when lib target allows)
+
+```ts
+// ❌
+for (const skill of skills) {
+  …
+}
+
+// ✅
+skills.reduce((acc, skill) => {
+  …
+  return acc;
+}, new Map());
+```
+
+Exceptions: generated code, rare low-level loops where a reduce would obscure control flow — call out in review.

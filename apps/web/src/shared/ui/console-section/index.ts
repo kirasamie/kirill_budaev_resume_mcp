@@ -1,0 +1,1 @@
+export { ConsoleSection } from './view';

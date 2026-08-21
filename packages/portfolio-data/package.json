@@ -17,11 +17,17 @@
       "types": "./dist/landing/index.d.ts",
       "import": "./dist/landing/index.js",
       "default": "./dist/landing/index.js"
+    },
+    "./resume": {
+      "types": "./dist/resume/index.d.ts",
+      "import": "./dist/resume/index.js",
+      "default": "./dist/resume/index.js"
     }
   },
   "scripts": {
     "build": "tsc -p tsconfig.json && node scripts/copy-assets.mjs",
-    "test": "jest"
+    "test": "jest",
+    "test:cov": "jest --coverage"
   },
   "devDependencies": {
     "@jest/globals": "~30.4.1"

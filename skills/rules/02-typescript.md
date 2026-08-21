@@ -42,6 +42,23 @@ Use `export const`, not `export function`:
 export const loadPortfolioRaw = (): PortfolioRaw => ({ ... });
 ```
 
+### Iteration
+
+Do **not** use `for...of` in application code. Prefer `.map` / `.filter` / `.reduce`, `Array.from`, `Object.entries` / `Object.groupBy`.
+
+```typescript
+// ✅
+skills.reduce((acc, skill) => {
+  const current = acc.get(skill.category) ?? [];
+  current.push(skill);
+  acc.set(skill.category, current);
+  return acc;
+}, new Map());
+
+// ❌
+for (const skill of skills) { … }
+```
+
 ### Return types
 
 Skip explicit return type when inference yields a **simple** type:
